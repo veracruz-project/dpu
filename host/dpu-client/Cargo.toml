@@ -8,6 +8,5 @@ edition = "2018"
 [dependencies]
 anyhow = "1.0.14"
 log = "0.4.13"
-#proxy-attestation-client = { git = "https://github.com/veracruz-project/proxy-attestation-client", tag = "v0.2" }
-proxy-attestation-client = { path = "../proxy-attestation-client" }
+proxy-attestation-client = { git = "https://github.com/gbryant-arm/proxy-attestation-client", branch = "gbryant/base64-0.21" }
 transport = { path = "../../common/transport" }

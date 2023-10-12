@@ -1,12 +1,3 @@
 [submodule "common/rust-mbedtls"]
 	path = common/rust-mbedtls
 	url = https://github.com/veracruz-project/rust-mbedtls
-[submodule "dpu/parsec"]
-	path = dpu/parsec
-	url = https://github.com/parallaxsecond/parsec
-[submodule "host/proxy-attestation-client"]
-	path = host/proxy-attestation-client
-	url = https://github.com/gbryant-arm/proxy-attestation-client
-[submodule "host/parsec-client-rust"]
-	path = host/parsec-client-rust
-	url = https://github.com/parallaxsecond/parsec-client-rust
