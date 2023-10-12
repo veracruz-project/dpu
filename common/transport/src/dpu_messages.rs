@@ -39,7 +39,7 @@ pub enum Status {
 /// These messages are intended to be serialized using bincode before transport,
 /// and deserialized using bincode after transport.
 #[derive(Serialize, Deserialize, Debug)]
-pub enum RuntimeManagerRequest {
+pub enum DpuRequest {
     /// A request to start the attestation process
     /// parameters:
     /// Vec<u8> - the challenge value
@@ -59,7 +59,7 @@ pub enum RuntimeManagerRequest {
 /// These messages are intended to be serialized using bincode before transport,
 /// and deserialized using bincode after transport.
 #[derive(Serialize, Deserialize, Debug)]
-pub enum RuntimeManagerResponse {
+pub enum DpuResponse {
     /// The response to the `Attestation` request.  Parameters (in order) are:
     /// - A byte encoding of the PSA attestation token,
     /// - A byte encoding of the Certificate Signing Request.

@@ -18,7 +18,7 @@ use psa_attestation::{
     psa_initial_attest_get_token, psa_initial_attest_load_key, psa_initial_attest_remove_key,
 };
 use std::net::TcpStream;
-use transport::{runtime_manager_messages::{RuntimeManagerRequest, RuntimeManagerResponse, Status}, tcp::{receive_message, send_message}};
+use transport::{dpu_messages::{DpuRequest, DpuResponse, Status}, tcp::{receive_message, send_message}};
 
 ////////////////////////////////////////////////////////////////////////////////
 // Constants.
@@ -144,7 +144,7 @@ impl DPURuntime {
     pub fn decode_dispatch(&self, socket: &mut TcpStream) -> Result<()> {
         let received_message = receive_message(socket)?;
         let return_message = match received_message {
-            RuntimeManagerRequest::Attestation(challenge, _challenge_id) => {
+            DpuRequest::Attestation(challenge, _challenge_id) => {
                 debug!("dpu_runtime::decode_dispatch Attestation");
                 let ret = self.attestation(&challenge)?;
                 debug!(
@@ -153,10 +153,10 @@ impl DPURuntime {
                 );
                 ret
             },
-            RuntimeManagerRequest::Initialize(_policy, _cert_chain) => {
+            DpuRequest::Initialize(_policy, _cert_chain) => {
                 debug!("policy: {:?}", _policy);
                 debug!("cert_chain: {:?}", _cert_chain);
-                RuntimeManagerResponse::Status(Status::Success)
+                DpuResponse::Status(Status::Success)
             },
         };
         send_message(socket, return_message)
@@ -164,7 +164,7 @@ impl DPURuntime {
 }
 
 pub trait PlatformRuntime {
-    fn attestation(&self, challenge: &Vec<u8>) -> Result<RuntimeManagerResponse>;
+    fn attestation(&self, challenge: &Vec<u8>) -> Result<DpuResponse>;
 }
 
 impl PlatformRuntime for DPURuntime {
@@ -172,7 +172,7 @@ impl PlatformRuntime for DPURuntime {
     /// root private keys and computing the runtime manager hash.  If successful,
     /// produces a PSA attestation token binding the CSR hash, runtime manager hash,
     /// and challenge.
-    fn attestation(&self, challenge: &Vec<u8>) -> Result<RuntimeManagerResponse> {
+    fn attestation(&self, challenge: &Vec<u8>) -> Result<DpuResponse> {
         let csr = self.session_context.generate_csr().map_err(|e| {
             error!(
                 "Failed to generate certificate signing request.  Error produced: {:?}.",
@@ -254,6 +254,6 @@ impl PlatformRuntime for DPURuntime {
             )));
         }
 
-        return Ok(RuntimeManagerResponse::AttestationData(token, csr));
+        return Ok(DpuResponse::AttestationData(token, csr));
     }
 }
