@@ -1,0 +1,18 @@
+[package]
+name = "dpu-runtime-manager"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+anyhow = "1"
+bincode = "1.2.1"
+clap = "4"
+env_logger = { version = "0.10.0" }
+getrandom = "0.2.10"
+hex = { version = "0.4.2" }
+lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
+log = "0.4.13"
+mbedtls = { path = "../../common/rust-mbedtls/mbedtls", default-features = false, features = ["std", "aesni", "padlock", "tls13"] }
+nix = "0.26"
+psa-attestation = { path = "../../common/psa-attestation", features = ["linux"] }
+transport = { path = "../../common/transport" }

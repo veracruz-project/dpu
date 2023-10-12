@@ -1,0 +1,26 @@
+[package]
+authors = ["The Veracruz Development Team"]
+build = "build.rs"
+description = "An implementation of Arm's PSA attestation protocol."
+edition = "2018"
+links = "psa_attestation"
+name = "psa-attestation"
+version = "0.3.0"
+
+[lib]
+crate-type = ["rlib"]
+
+[features]
+# build.rs depends on features
+linux = []
+
+[dependencies]
+libc = "0.2.124"
+# We are not really using mbedtls-sys-auto but we are using the C
+# library libmbedcrypto.a that mbedtls-sys-auto builds.
+mbedtls-sys-auto = { path = "../rust-mbedtls/mbedtls-sys", default-features = false }
+
+
+[build-dependencies]
+bindgen = "0.65.1"
+cfg-if = "1.0"
