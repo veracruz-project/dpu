@@ -47,13 +47,11 @@ pub fn receive_message<T>(socket: &mut TcpStream) -> Result<T>
 where
     T: DeserializeOwned,
 {
-    println!("before receive_buffer");
     let response = receive_buffer(socket).map_err(|e| {
         error!("Failed to receive response.  Error produced: {}.", e);
 
         e
     })?;
-    println!("after receive_buffer");
 
     let message: T = deserialize(&response).map_err(|e| {
         error!("Failed to deserialize response.  Error produced: {}.", e);

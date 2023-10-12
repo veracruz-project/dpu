@@ -1,0 +1,12 @@
+[package]
+authors = ["The Veracruz Development Team"]
+description = "The test program for attesting a DPU."
+name = "attestation"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0.14"
+dpu-client = { path = "../../dpu-client" }
+env_logger = { version = "0.10.0" }
+log = "0.4.13"
