@@ -18,7 +18,7 @@ use psa_attestation::{
     psa_initial_attest_get_token, psa_initial_attest_load_key, psa_initial_attest_remove_key,
 };
 use std::net::TcpStream;
-use transport::{dpu_messages::{DpuRequest, DpuResponse, Status}, tcp::{receive_message, send_message}};
+use transport::{messages::{Request, Response, Status}, tcp::{receive_message, send_message}};
 
 ////////////////////////////////////////////////////////////////////////////////
 // Constants.
@@ -144,7 +144,7 @@ impl DPURuntime {
     pub fn decode_dispatch(&self, socket: &mut TcpStream) -> Result<()> {
         let received_message = receive_message(socket)?;
         let return_message = match received_message {
-            DpuRequest::Attestation(challenge, _challenge_id) => {
+            Request::Attestation(challenge, _challenge_id) => {
                 debug!("dpu_runtime::decode_dispatch Attestation");
                 let ret = self.attestation(&challenge)?;
                 debug!(
@@ -153,10 +153,11 @@ impl DPURuntime {
                 );
                 ret
             },
-            DpuRequest::Initialize(_policy, _cert_chain) => {
-                debug!("policy: {:?}", _policy);
-                debug!("cert_chain: {:?}", _cert_chain);
-                DpuResponse::Status(Status::Success)
+            Request::IndirectAttestation(_attestee_url) => {
+                Response::Status(Status::Unimplemented)
+            },
+            Request::Initialize(_policy, _cert_chain) => {
+                Response::Status(Status::Success)
             },
         };
         send_message(socket, return_message)
@@ -164,7 +165,7 @@ impl DPURuntime {
 }
 
 pub trait PlatformRuntime {
-    fn attestation(&self, challenge: &Vec<u8>) -> Result<DpuResponse>;
+    fn attestation(&self, challenge: &Vec<u8>) -> Result<Response>;
 }
 
 impl PlatformRuntime for DPURuntime {
@@ -172,7 +173,7 @@ impl PlatformRuntime for DPURuntime {
     /// root private keys and computing the runtime manager hash.  If successful,
     /// produces a PSA attestation token binding the CSR hash, runtime manager hash,
     /// and challenge.
-    fn attestation(&self, challenge: &Vec<u8>) -> Result<DpuResponse> {
+    fn attestation(&self, challenge: &Vec<u8>) -> Result<Response> {
         let csr = self.session_context.generate_csr().map_err(|e| {
             error!(
                 "Failed to generate certificate signing request.  Error produced: {:?}.",
@@ -254,6 +255,6 @@ impl PlatformRuntime for DPURuntime {
             )));
         }
 
-        return Ok(DpuResponse::AttestationData(token, csr));
+        return Ok(Response::AttestationData(token, csr));
     }
 }

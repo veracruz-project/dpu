@@ -39,14 +39,20 @@ pub enum Status {
 /// These messages are intended to be serialized using bincode before transport,
 /// and deserialized using bincode after transport.
 #[derive(Serialize, Deserialize, Debug)]
-pub enum DpuRequest {
-    /// A request to start the attestation process
+pub enum Request {
+    /// A request from the attester, asking the attestee to start the
+    /// attestation process
     /// parameters:
     /// Vec<u8> - the challenge value
     /// i32     - the challenge ID
     Attestation(Vec<u8>, Uuid),
-    /// A request to initialize the Runtime Manager enclave with the provided
-    /// policy and certificate (for Nitro).
+    /// A request to attest another device, identified by an URL, on behalf of
+    /// the host
+    /// parameters:
+    /// &str - the attestee's URL
+    IndirectAttestation(String),
+    /// A request to initialize the DPU with the provided policy and
+    /// certificate (for Nitro).
     /// parameters:
     /// String  - The policy, in JSON format
     /// Vec<Vec<u8>> - The certificate chain for the enclave
@@ -59,7 +65,7 @@ pub enum DpuRequest {
 /// These messages are intended to be serialized using bincode before transport,
 /// and deserialized using bincode after transport.
 #[derive(Serialize, Deserialize, Debug)]
-pub enum DpuResponse {
+pub enum Response {
     /// The response to the `Attestation` request.  Parameters (in order) are:
     /// - A byte encoding of the PSA attestation token,
     /// - A byte encoding of the Certificate Signing Request.
