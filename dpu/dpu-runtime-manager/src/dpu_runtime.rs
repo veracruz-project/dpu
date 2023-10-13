@@ -14,7 +14,7 @@ use getrandom::getrandom;
 use log::debug;
 use mbedtls;
 use std::net::TcpStream;
-use transport::{messages::{Request, Response, Status}, tcp::{receive_message, send_message}};
+use transport::{messages::{Request, Response, Status}, session::Session, tcp::{receive_message, send_message}};
 use utils::attestation;
 
 pub struct SessionContext {
@@ -72,6 +72,10 @@ impl DPURuntime {
         Ok(DPURuntime { session_context })
     }
 
+    /// Process host's messages here.
+    /// Note that the communication channel between host and DPU is not secure.
+    /// Additionally there is no state machine specifying the order in which
+    /// messages should be received.
     pub fn decode_dispatch(&self, socket: &mut TcpStream) -> Result<()> {
         let received_message = receive_message(socket)?;
         let return_message = match received_message {
@@ -84,10 +88,17 @@ impl DPURuntime {
                 );
                 ret
             },
-            Request::IndirectAttestation(_attestee_url) => {
-                Response::Status(Status::Unimplemented)
+            Request::IndirectAttestation(attestation_server_url, attestee_url) => {
+                debug!("dpu_runtime::decode_dispatch IndirectAttestation");
+                // WIP
+                let mut session = Session::new(&attestee_url)?;
+                match attestation::request_attestation(session.get_mut_socket(), &attestation_server_url) {
+                    Ok(_) => Response::Status(Status::Success),
+                    Err(_) => Response::Status(Status::Fail),
+                }
             },
             Request::Initialize(_policy, _cert_chain) => {
+                debug!("dpu_runtime::decode_dispatch Initialize");
                 Response::Status(Status::Success)
             },
         };

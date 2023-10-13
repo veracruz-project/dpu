@@ -27,9 +27,9 @@ lazy_static! {
     static ref RUNTIME_MANAGER_MEASUREMENT: Mutex<Vec<u8>> = Mutex::new(vec![0u8; 32]);
 }
 
-/// IP address for use by DPU.
-const DPU_SERVER_ADDRESS: &str = "127.0.0.1";
-const DPU_SERVER_PORT: i32 = 6666;
+/// Default IP address and port for use by the DPU.
+const DEFAULT_LISTENING_ADDRESS: &str = "127.0.0.1";
+const DEFAULT_LISTENING_PORT: &str = "6666";
 
 ////////////////////////////////////////////////////////////////////////////////
 // Entry point and message dispatcher.
@@ -50,19 +50,26 @@ fn main() -> Result<(), String> {
 pub fn dpu_main() -> Result<()> {
     env_logger::init();
 
-    // init_session_manager()?;
-
     let matches = clap::Command::new("DPU runtime manager enclave")
         .author("The Veracruz Development Team")
-        /*.arg(
+        .arg(
             Arg::new("address")
                 .short('a')
                 .long("address")
                 .num_args(1)
-                .required(true)
-                .help("Address for connecting to Veracruz Server.")
+                .required(false)
+                .help("Listening address.")
                 .value_name("ADDRESS"),
-        )*/
+        )
+        .arg(
+            Arg::new("port")
+                .short('p')
+                .long("port")
+                .num_args(1)
+                .required(false)
+                .help("Listening port.")
+                .value_name("PORT"),
+        )
         .arg(
             Arg::new("runtime_manager_measurement")
                 .short('m')
@@ -77,9 +84,17 @@ pub fn dpu_main() -> Result<()> {
     /*let address = if let Some(address) = matches.get_one::<String>("address") {
         address
     } else {
-        error!("No address given. Exiting...");
-        return Err(anyhow!("RuntimeManagerError::CommandLineArguments"));
+        &String::from(DEFAULT_LISTENING_ADDRESS)
     };*/
+    let listening_address = match matches.get_one::<String>("address") {
+        Some(s) => s.as_str(),
+        None => DEFAULT_LISTENING_ADDRESS,
+    };
+
+    let listening_port = match matches.get_one::<String>("port") {
+        Some(s) => s.as_str(),
+        None => DEFAULT_LISTENING_PORT,
+    };
 
     let measurement =
         if let Some(measurement) = matches.get_one::<String>("runtime_manager_measurement") {
@@ -104,9 +119,9 @@ pub fn dpu_main() -> Result<()> {
         *rmm = measurement_bytes;
     }
 
-    let dpu_runtime = dpu_runtime::DPURuntime::new()?;
+    let dpu_runtime: dpu_runtime::DPURuntime = dpu_runtime::DPURuntime::new()?;
 
-    let address = format!("{}:{}", DPU_SERVER_ADDRESS, DPU_SERVER_PORT);
+    let address = format!("{}:{}", listening_address, listening_port);
     let listener = TcpListener::bind(&address).map_err(|e| {
         anyhow!("Could not bind TCP listener: {}", e)
     })?;
@@ -120,7 +135,7 @@ pub fn dpu_main() -> Result<()> {
                 ioerr
             )
         })?;
-        info!("Accepted connection from host.");
+        info!("Accepted connection.");
 
         // Configure TCP to flush outgoing buffers immediately. This reduces latency
         // when dealing with small packets
@@ -129,6 +144,8 @@ pub fn dpu_main() -> Result<()> {
         debug!("DPU Runtime Manager::main accept succeeded. Looping");
         loop {
             dpu_runtime.decode_dispatch(&mut runtime_manager_socket)?;
+            //let _ = dpu_runtime.decode_dispatch(&mut runtime_manager_socket);
+            //std::thread::sleep(std::time::Duration::from_millis(1000)
         }
     }
 }

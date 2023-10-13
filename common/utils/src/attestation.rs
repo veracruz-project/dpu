@@ -80,7 +80,7 @@ fn generate_csr(private_key: &[u8]) -> Result<Vec<u8>> {
 }
 
 /// Request attestation.
-pub fn request_attestation(attestation_server_url: &str, attestee_url: &str) -> anyhow::Result<()> {
+pub fn request_attestation(socket: &mut TcpStream, attestation_server_url: &str) -> anyhow::Result<()> {
     info!("Starting attestation.");
 
     let (challenge_id, challenge) = proxy_attestation_client::start_proxy_attestation(
@@ -93,24 +93,15 @@ pub fn request_attestation(attestation_server_url: &str, attestee_url: &str) -> 
             )
         })?;
 
-    info!("Connecting to attestee.");
-    
-    let mut socket = TcpStream::connect(&attestee_url).map_err(|e| {
-        error!("Could not connect to attestee on {}: {}", attestee_url, e);
-        anyhow!(e)
-    })?;
-
-    info!("Connected to attestee on {}.", attestee_url);
-
     // Send a message to the attestee
-    send_message(&mut socket, &Request::Attestation(challenge, challenge_id)).map_err(|e| {
+    send_message(socket, &Request::Attestation(challenge, challenge_id)).map_err(|e| {
         error!("Failed to send attestation message to attestee.  Error returned: {:?}.", e);
         e
     })?;
 
     info!("Attestation message successfully sent to attestee.");
 
-    let received: Response = receive_message(&mut socket).map_err(|e| {
+    let received: Response = receive_message(socket).map_err(|e| {
         error!("Failed to receive response to attestation message.  Error received: {:?}.", e);
         e
     })?;
@@ -146,14 +137,14 @@ pub fn request_attestation(attestation_server_url: &str, attestee_url: &str) -> 
     info!("Certificate chain received from attestation server.  Forwarding to attestee.");
 
     let policy = "";
-    send_message(&mut socket, &Request::Initialize(String::from(policy), cert_chain)).map_err(|e| {
+    send_message(socket, &Request::Initialize(String::from(policy), cert_chain)).map_err(|e| {
         error!("Failed to send certificate chain message to attestee.  Error returned: {:?}.", e);
         e
     })?;
 
     info!("Certificate chain message sent, awaiting response.");
 
-    let received: Response = receive_message(&mut socket).map_err(|e| {
+    let received: Response = receive_message(socket).map_err(|e| {
         error!("Failed to receive response to certificate chain message message from attestee.  Error returned: {:?}.", e);
         e
     })?;

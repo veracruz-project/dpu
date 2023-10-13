@@ -49,8 +49,9 @@ pub enum Request {
     /// A request to attest another device, identified by an URL, on behalf of
     /// the host
     /// parameters:
-    /// &str - the attestee's URL
-    IndirectAttestation(String),
+    /// String - the attestation server's URL
+    /// String - the attestee's URL
+    IndirectAttestation(String, String),
     /// A request to initialize the DPU with the provided policy and
     /// certificate (for Nitro).
     /// parameters:
