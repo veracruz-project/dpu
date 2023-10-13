@@ -1,7 +1,6 @@
 //! An example to attest the DPU.
 
-use anyhow::anyhow;
-use dpu_client::attestation;
+use utils::attestation;
 use log::info;
 
 const DPU_SERVER_URL: &str = "127.0.0.1:6666";
@@ -14,7 +13,7 @@ fn main() -> anyhow::Result<()> {
     let dpu_address = DPU_SERVER_URL;
     let proxy_attestation_server_url = ATTESTATION_SERVER_URL;
 
-    attestation::attest(proxy_attestation_server_url, dpu_address)?;
+    attestation::request_attestation(proxy_attestation_server_url, dpu_address)?;
 
     info!("Attestation successful.");
 

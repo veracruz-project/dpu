@@ -1,0 +1,16 @@
+[package]
+authors = ["The Veracruz Development Team"]
+description = "Utils."
+name = "utils"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0.14"
+getrandom = "0.2.10"
+log = "0.4.13"
+mbedtls = { path = "../rust-mbedtls/mbedtls", default-features = false, features = ["std", "aesni", "padlock", "tls13"] }
+nix = "0.26"
+proxy-attestation-client = { git = "https://github.com/gbryant-arm/proxy-attestation-client", branch = "gbryant/base64-0.21" }
+psa-attestation = { path = "../psa-attestation", features = ["linux"] }
+transport = { path = "../../common/transport" }

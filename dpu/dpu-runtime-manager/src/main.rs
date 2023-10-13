@@ -19,7 +19,7 @@ use clap::Arg;
 use hex::decode_to_slice;
 use lazy_static::lazy_static;
 use log::{debug, error, info};
-use std::{net::{TcpListener}, sync::Mutex};
+use std::{net::TcpListener, sync::Mutex};
 
 mod dpu_runtime;
 

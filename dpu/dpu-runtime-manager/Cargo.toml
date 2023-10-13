@@ -13,6 +13,5 @@ hex = { version = "0.4.2" }
 lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
 log = "0.4.13"
 mbedtls = { path = "../../common/rust-mbedtls/mbedtls", default-features = false, features = ["std", "aesni", "padlock", "tls13"] }
-nix = "0.26"
-psa-attestation = { path = "../../common/psa-attestation", features = ["linux"] }
 transport = { path = "../../common/transport" }
+utils = { path = "../../common/utils" }
