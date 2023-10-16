@@ -81,11 +81,6 @@ pub fn dpu_main() -> Result<()> {
         )
         .get_matches();
 
-    /*let address = if let Some(address) = matches.get_one::<String>("address") {
-        address
-    } else {
-        &String::from(DEFAULT_LISTENING_ADDRESS)
-    };*/
     let listening_address = match matches.get_one::<String>("address") {
         Some(s) => s.as_str(),
         None => DEFAULT_LISTENING_ADDRESS,
@@ -143,9 +138,11 @@ pub fn dpu_main() -> Result<()> {
 
         debug!("DPU Runtime Manager::main accept succeeded. Looping");
         loop {
-            dpu_runtime.decode_dispatch(&mut runtime_manager_socket)?;
-            //let _ = dpu_runtime.decode_dispatch(&mut runtime_manager_socket);
-            //std::thread::sleep(std::time::Duration::from_millis(1000)
+            // Receive requests and serve them. Terminate connection if
+            // receiving an invalid message
+            if dpu_runtime.decode_dispatch(&mut runtime_manager_socket).is_err() {
+                break;
+            }
         }
     }
 }
