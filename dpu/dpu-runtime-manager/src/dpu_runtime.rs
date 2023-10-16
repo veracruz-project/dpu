@@ -91,10 +91,14 @@ impl DPURuntime {
             Request::IndirectAttestation(attestation_server_url, attestee_url) => {
                 debug!("dpu_runtime::decode_dispatch IndirectAttestation");
                 // WIP
-                let mut session = Session::new(&attestee_url)?;
-                match attestation::request_attestation(session.get_mut_socket(), &attestation_server_url) {
-                    Ok(_) => Response::Status(Status::Success),
-                    Err(_) => Response::Status(Status::Fail),
+                let session = Session::new(&attestee_url);
+                if session.is_err() {
+                    Response::Status(Status::Fail)
+                } else {
+                    match attestation::request_attestation(session?.get_mut_socket(), &attestation_server_url) {
+                        Ok(_) => Response::Status(Status::Success),
+                        Err(_) => Response::Status(Status::Fail),
+                    }
                 }
             },
             Request::Initialize(_policy, _cert_chain) => {
