@@ -40,7 +40,7 @@ fn main() -> anyhow::Result<()> {
             info!("Successfully attested DPU2.");
         },
         _ => {
-            info!("Error attesting DPU2.");
+            error!("Error attesting DPU2.");
             return Err(anyhow!("Attestation failure."));
         },
     }
