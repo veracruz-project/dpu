@@ -3,7 +3,7 @@
 use anyhow::anyhow;
 use log::{error, info};
 use utils::attestation;
-use transport::{messages::{Request, Response, Status}, session::Session, tcp::{receive_message, send_message}};
+use transport::{messages::{Request, Response, Status}, session::Session};
 
 
 const DPU1_SERVER_URL: &str = "127.0.0.1:6666";
@@ -20,18 +20,18 @@ fn main() -> anyhow::Result<()> {
     let dpu2_server_url = DPU2_SERVER_URL;
     let proxy_attestation_server_url = ATTESTATION_SERVER_URL;
 
-    let mut session = Session::new(dpu1_server_url)?;
+    let dpu1_session_id = Session::from_url(dpu1_server_url)?;
 
     info!("Attesting DPU1...");
-    attestation::request_attestation(session.get_mut_socket(), proxy_attestation_server_url)?;
+    attestation::request_attestation(dpu1_session_id, proxy_attestation_server_url)?;
     info!("Successfully attested DPU1.");
 
     info!("Indirectly attesting DPU2...");
-    send_message(session.get_mut_socket(), &Request::IndirectAttestation(String::from(proxy_attestation_server_url), String::from(dpu2_server_url))).map_err(|e| {
+    Session::send_message(dpu1_session_id, &Request::IndirectAttestation(proxy_attestation_server_url.to_owned(), dpu2_server_url.to_owned())).map_err(|e| {
         error!("Failed to send attestation message to attestee.  Error returned: {:?}.", e);
         e
     })?;
-    let response = receive_message(session.get_mut_socket()).map_err(|e| {
+    let response = Session::receive_message(dpu1_session_id).map_err(|e| {
         error!("Failed to receive response to attestation message.  Error received: {:?}.", e);
         e
     })?;

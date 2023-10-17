@@ -10,8 +10,7 @@ use proxy_attestation_client;
 use psa_attestation::{
     psa_initial_attest_get_token, psa_initial_attest_load_key, psa_initial_attest_remove_key,
 };
-use std::net::TcpStream;
-use transport::{messages::{Request, Response, Status}, tcp::{receive_message, send_message}};
+use transport::{messages::{Request, Response, Status}, session::{Session, SessionId}};
 
 ////////////////////////////////////////////////////////////////////////////////
 // Constants.
@@ -80,7 +79,7 @@ fn generate_csr(private_key: &[u8]) -> Result<Vec<u8>> {
 }
 
 /// Request attestation.
-pub fn request_attestation(socket: &mut TcpStream, attestation_server_url: &str) -> anyhow::Result<()> {
+pub fn request_attestation(session_id: SessionId, attestation_server_url: &str) -> anyhow::Result<()> {
     info!("Starting attestation.");
 
     let (challenge_id, challenge) = proxy_attestation_client::start_proxy_attestation(
@@ -94,14 +93,14 @@ pub fn request_attestation(socket: &mut TcpStream, attestation_server_url: &str)
         })?;
 
     // Send a message to the attestee
-    send_message(socket, &Request::Attestation(challenge, challenge_id)).map_err(|e| {
+    Session::send_message(session_id, &Request::Attestation(challenge, challenge_id)).map_err(|e| {
         error!("Failed to send attestation message to attestee.  Error returned: {:?}.", e);
         e
     })?;
 
     info!("Attestation message successfully sent to attestee.");
 
-    let received: Response = receive_message(socket).map_err(|e| {
+    let received: Response = Session::receive_message(session_id).map_err(|e| {
         error!("Failed to receive response to attestation message.  Error received: {:?}.", e);
         e
     })?;
@@ -110,7 +109,6 @@ pub fn request_attestation(socket: &mut TcpStream, attestation_server_url: &str)
 
     let (token, csr) = match received {
         Response::AttestationData(token, csr) => {
-            info!("Response to attestation message successfully received.",);
             (token, csr)
         }
         otherwise => {
@@ -137,14 +135,14 @@ pub fn request_attestation(socket: &mut TcpStream, attestation_server_url: &str)
     info!("Certificate chain received from attestation server.  Forwarding to attestee.");
 
     let policy = "";
-    send_message(socket, &Request::Initialize(String::from(policy), cert_chain)).map_err(|e| {
+    Session::send_message(session_id, &Request::Initialize(policy.to_owned(), cert_chain)).map_err(|e| {
         error!("Failed to send certificate chain message to attestee.  Error returned: {:?}.", e);
         e
     })?;
 
     info!("Certificate chain message sent, awaiting response.");
 
-    let received: Response = receive_message(socket).map_err(|e| {
+    let received: Response = Session::receive_message(session_id).map_err(|e| {
         error!("Failed to receive response to certificate chain message message from attestee.  Error returned: {:?}.", e);
         e
     })?;

@@ -11,10 +11,9 @@
 
 use anyhow::Result;
 use getrandom::getrandom;
-use log::debug;
+use log::{debug, error, trace};
 use mbedtls;
-use std::net::TcpStream;
-use transport::{messages::{Request, Response, Status}, session::Session, tcp::{receive_message, send_message}};
+use transport::{messages::{Request, Response, Status}, session::{Session, SessionId}};
 use utils::attestation;
 
 pub struct SessionContext {
@@ -76,13 +75,13 @@ impl DPURuntime {
     /// Note that the communication channel between host and DPU is not secure.
     /// Additionally there is no state machine specifying the order in which
     /// messages should be received.
-    pub fn decode_dispatch(&self, socket: &mut TcpStream) -> Result<()> {
-        let received_message = receive_message(socket)?;
+    pub fn decode_dispatch(&self, session_id: SessionId) -> Result<()> {
+        let received_message = Session::receive_message(session_id)?;
         let return_message = match received_message {
             Request::Attestation(challenge, _challenge_id) => {
                 debug!("dpu_runtime::decode_dispatch Attestation");
                 let ret = self.attestation(&challenge)?;
-                debug!(
+                trace!(
                     "dpu_runtime::decode_dispatch Attestation complete with ret:{:?}\n",
                     ret
                 );
@@ -90,15 +89,17 @@ impl DPURuntime {
             },
             Request::IndirectAttestation(attestation_server_url, attestee_url) => {
                 debug!("dpu_runtime::decode_dispatch IndirectAttestation");
-                // WIP
-                let session = Session::new(&attestee_url);
-                if session.is_err() {
-                    Response::Status(Status::Fail)
-                } else {
-                    match attestation::request_attestation(session?.get_mut_socket(), &attestation_server_url) {
-                        Ok(_) => Response::Status(Status::Success),
-                        Err(_) => Response::Status(Status::Fail),
-                    }
+                match Session::from_url(&attestee_url) {
+                    Err(e) => {
+                        error!("IndirectAttestation failed: {}", e);
+                        Response::Status(Status::Fail)
+                    },
+                    Ok(session_id) => { 
+                        match attestation::request_attestation(session_id, &attestation_server_url) {
+                            Ok(_) => Response::Status(Status::Success),
+                            Err(_) => Response::Status(Status::Fail),
+                        }
+                    },
                 }
             },
             Request::Initialize(_policy, _cert_chain) => {
@@ -106,7 +107,7 @@ impl DPURuntime {
                 Response::Status(Status::Success)
             },
         };
-        send_message(socket, return_message)
+        Session::send_message(session_id, return_message)
     }
 }
 

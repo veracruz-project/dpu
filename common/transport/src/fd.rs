@@ -11,13 +11,16 @@
 
 use anyhow::Result;
 use byteorder::{ByteOrder, LittleEndian};
+use log::trace;
 
 /// Sends a `buffer` of data (by first transmitting an encoded length followed by
 /// the data proper) to the file descriptor `fd`.
-pub fn send_buffer<T>(mut fd: T, buffer: &[u8]) -> Result<()>
+pub fn send_buffer<T>(fd: &mut T, buffer: &[u8]) -> Result<()>
 where
     T: std::io::Write,
 {
+    trace!("Buffer to send: {:?}", buffer);
+
     let len = buffer.len();
 
     // 1: Encode the data length and send it.
@@ -35,7 +38,7 @@ where
 
 /// Reads a buffer of data from a file descriptor `fd` by first reading a length
 /// of data, followed by the data proper.
-pub fn receive_buffer<T>(mut fd: T) -> Result<Vec<u8>>
+pub fn receive_buffer<T>(fd: &mut T) -> Result<Vec<u8>>
 where
     T: std::io::Read,
 {
@@ -49,6 +52,8 @@ where
     // 2. Next, read the data proper.
     let mut buffer = vec![0u8; length];
     fd.read_exact(&mut buffer)?;
+
+    trace!("Buffer received (excluding length prefix): {:?}", buffer);
 
     Ok(buffer)
 }

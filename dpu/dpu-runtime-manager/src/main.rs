@@ -19,6 +19,7 @@ use clap::Arg;
 use hex::decode_to_slice;
 use lazy_static::lazy_static;
 use log::{debug, error, info};
+use transport::session::Session;
 use std::{net::TcpListener, sync::Mutex};
 
 mod dpu_runtime;
@@ -124,23 +125,22 @@ pub fn dpu_main() -> Result<()> {
 
     debug!("dpu_runtime_manager::dpu_main accept succeeded. looping");
     loop {
-        let (mut runtime_manager_socket, _) = listener.accept().map_err(|ioerr| {
+        let (runtime_manager_socket, _) = listener.accept().map_err(|ioerr| {
             anyhow!(
                 "Failed to accept any incoming TCP connection.  Error produced: {}.",
                 ioerr
             )
         })?;
-        info!("Accepted connection.");
+        info!("Accepted connection from {:?}.", runtime_manager_socket);
 
-        // Configure TCP to flush outgoing buffers immediately. This reduces latency
-        // when dealing with small packets
-        let _ = runtime_manager_socket.set_nodelay(true);
+        // Save session to sessions hashmap
+        let session_id = Session::from_socket(runtime_manager_socket)?;
 
         debug!("DPU Runtime Manager::main accept succeeded. Looping");
         loop {
             // Receive requests and serve them. Terminate connection if
-            // receiving an invalid message
-            if dpu_runtime.decode_dispatch(&mut runtime_manager_socket).is_err() {
+            // processing fails, e.g. if receiving an invalid message
+            if dpu_runtime.decode_dispatch(session_id).is_err() {
                 break;
             }
         }
