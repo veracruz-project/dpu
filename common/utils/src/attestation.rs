@@ -92,20 +92,20 @@ pub fn request_attestation(session_id: SessionId, attestation_server_url: &str) 
             )
         })?;
 
-    // Send a message to the attestee
+    // Send a message to the attester (i.e. the party producing the evidence)
     Session::send_message(session_id, &Request::Attestation(challenge, challenge_id)).map_err(|e| {
-        error!("Failed to send attestation message to attestee.  Error returned: {:?}.", e);
+        error!("Failed to send attestation message to attester.  Error returned: {:?}.", e);
         e
     })?;
 
-    info!("Attestation message successfully sent to attestee.");
+    info!("Attestation message successfully sent to attester.");
 
     let received: Response = Session::receive_message(session_id).map_err(|e| {
         error!("Failed to receive response to attestation message.  Error received: {:?}.", e);
         e
     })?;
 
-    info!("Response to attestation message received from attestee.");
+    info!("Response to attestation message received from attester.");
 
     let (token, csr) = match received {
         Response::AttestationData(token, csr) => {
@@ -113,7 +113,7 @@ pub fn request_attestation(session_id: SessionId, attestation_server_url: &str) 
         }
         otherwise => {
             error!(
-                "Unexpected response received from attestee: {:?}.",
+                "Unexpected response received from attester: {:?}.",
                 otherwise
             );
 
@@ -132,32 +132,32 @@ pub fn request_attestation(session_id: SessionId, attestation_server_url: &str) 
         cert_chain
     };
 
-    info!("Certificate chain received from attestation server.  Forwarding to attestee.");
+    info!("Certificate chain received from attestation server.  Forwarding to attester.");
 
     let policy = "";
     Session::send_message(session_id, &Request::Initialize(policy.to_owned(), cert_chain)).map_err(|e| {
-        error!("Failed to send certificate chain message to attestee.  Error returned: {:?}.", e);
+        error!("Failed to send certificate chain message to attester.  Error returned: {:?}.", e);
         e
     })?;
 
     info!("Certificate chain message sent, awaiting response.");
 
     let received: Response = Session::receive_message(session_id).map_err(|e| {
-        error!("Failed to receive response to certificate chain message message from attestee.  Error returned: {:?}.", e);
+        error!("Failed to receive response to certificate chain message message from attester.  Error returned: {:?}.", e);
         e
     })?;
 
     match received {
-        Response::Status(Status::Success) => {
-            info!("Received success message from runtime manager enclave.");
+        Response::Status(Status::Success(m)) => {
+            info!("Received success message from runtime manager enclave: '{}'", m);
             Ok(())
         },
         Response::Status(otherwise) => {
-            Err(anyhow!("Received non-success error code from attestee: {:?}.",
+            Err(anyhow!("Received non-success error code from attester: {:?}.",
             otherwise))
         }
         otherwise => {
-            Err(anyhow!("Received unexpected response from attestee: {:?}.",
+            Err(anyhow!("Received unexpected response from attester: {:?}.",
             otherwise))
         }
     }.map_err(|e| { anyhow!("Attestation failed: {}. Aborting.", e) })?;
@@ -165,7 +165,7 @@ pub fn request_attestation(session_id: SessionId, attestation_server_url: &str) 
     Ok(())
 }
 
-/// Generate atestation data. Called by the attestee upon receiving an attestation request from the attester.
+/// Generate atestation data. Called by the attester upon receiving an attestation request from the attester.
 /// Performs a dummy implementation of native attestation using the insecure
 /// root private keys and computing the runtime manager hash.  If successful,
 /// produces a PSA attestation token binding the CSR hash, runtime manager hash,

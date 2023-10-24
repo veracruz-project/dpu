@@ -2,6 +2,7 @@
 members = [
     "dpu/dpu-runtime-manager",
     "host/examples/attestation",
+    "host/examples/provision_execute",
 ]
 
 resolver = "2"

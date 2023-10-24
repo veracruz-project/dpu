@@ -28,7 +28,7 @@ fn main() -> anyhow::Result<()> {
 
     info!("Indirectly attesting DPU2...");
     Session::send_message(dpu1_session_id, &Request::IndirectAttestation(proxy_attestation_server_url.to_owned(), dpu2_server_url.to_owned())).map_err(|e| {
-        error!("Failed to send attestation message to attestee.  Error returned: {:?}.", e);
+        error!("Failed to send attestation message to DPU1.  Error returned: {:?}.", e);
         e
     })?;
     let response = Session::receive_message(dpu1_session_id).map_err(|e| {
@@ -36,12 +36,12 @@ fn main() -> anyhow::Result<()> {
         e
     })?;
     match response {
-        Response::Status(Status::Success) => {
+        Response::Status(Status::Success(_)) => {
             info!("Successfully attested DPU2.");
         },
         _ => {
             error!("Error attesting DPU2.");
-            return Err(anyhow!("Attestation failure."));
+            return Err(anyhow!("Indirect attestation failure."));
         },
     }
 

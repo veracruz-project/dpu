@@ -13,8 +13,13 @@ use anyhow::Result;
 use getrandom::getrandom;
 use log::{debug, error, trace};
 use mbedtls;
+use std::{fs::{File, create_dir_all}, io::Write, path::PathBuf, process::Command};
 use transport::{messages::{Request, Response, Status}, session::{Session, SessionId}};
 use utils::attestation;
+
+/// Filesystem root. Session sysroots are derived from it.
+/// Warning: This is insecure and should be better sandboxed.
+const FILESYSTEM_ROOT: &'static str = "/tmp/dpu_rm";
 
 pub struct SessionContext {
     /// The private key used by the server (as a Vec<u8> for convenience)
@@ -71,6 +76,13 @@ impl DPURuntime {
         Ok(DPURuntime { session_context })
     }
 
+    pub fn init_sysroot(session_id: SessionId) -> Result<PathBuf> {
+        let mut session_sysroot = PathBuf::from(FILESYSTEM_ROOT);
+        session_sysroot.push(session_id.to_string());
+        create_dir_all(&session_sysroot)?;
+        Ok(session_sysroot)
+    }
+
     /// Process host's messages here.
     /// Note that the communication channel between host and DPU is not secure.
     /// Additionally there is no state machine specifying the order in which
@@ -87,24 +99,53 @@ impl DPURuntime {
                 );
                 ret
             },
-            Request::IndirectAttestation(attestation_server_url, attestee_url) => {
+            Request::IndirectAttestation(attestation_server_url, attester_url) => {
                 debug!("dpu_runtime::decode_dispatch IndirectAttestation");
-                match Session::from_url(&attestee_url) {
+                match Session::from_url(&attester_url) {
                     Err(e) => {
-                        error!("IndirectAttestation failed: {}", e);
-                        Response::Status(Status::Fail)
+                        Response::Status(Status::Fail(
+                            format!("IndirectAttestation request failed: {}", e)
+                        ))
                     },
                     Ok(session_id) => { 
                         match attestation::request_attestation(session_id, &attestation_server_url) {
-                            Ok(_) => Response::Status(Status::Success),
-                            Err(_) => Response::Status(Status::Fail),
+                            Ok(_) => Response::Status(Status::Success(String::new())),
+                            Err(e) => Response::Status(Status::Fail(
+                                format!("IndirectAttestation request failed: {}", e)
+                            )),
                         }
                     },
                 }
             },
             Request::Initialize(_policy, _cert_chain) => {
                 debug!("dpu_runtime::decode_dispatch Initialize");
-                Response::Status(Status::Success)
+                Response::Status(Status::Success(String::new()))
+            },
+            Request::UploadFile(filename, data) => {
+                debug!("dpu_runtime::decode_dispatch UploadFile");
+                // TODO: Sanitize filename to prevent sender from bypassing the
+                // filesystem's sandbox
+                // TODO: Tear down session sysroot at end of session
+                let session_sysroot = DPURuntime::init_sysroot(session_id)?;
+                let mut path = session_sysroot.clone();
+                path.push(filename);
+                let mut file = File::create(&path)?;
+                file.write_all(&data)?;
+                Response::Status(Status::Success(String::new()))
+            },
+            Request::Execute(cmd) => {
+                // Execute shell command from the session's sysroot.
+                // Warning: This is insecure.
+                let session_sysroot = DPURuntime::init_sysroot(session_id)?;
+                debug!("dpu_runtime::decode_dispatch Execute");
+                debug!("Executing '{:?}'", cmd);
+                let output = Command::new("/usr/bin/sh")
+                    .args(["-c"])
+                    .args([cmd])
+                    .current_dir(session_sysroot)
+                    .output()?;
+                let output = format!("{:?}", output);
+                Response::Status(Status::Success(output))
             },
         };
         Session::send_message(session_id, return_message)
