@@ -11,7 +11,7 @@
 
 use anyhow::Result;
 use getrandom::getrandom;
-use log::{debug, error, trace};
+use log::{debug, trace};
 use mbedtls;
 use std::{fs::{File, create_dir_all}, io::Write, path::PathBuf, process::Command};
 use transport::{messages::{Request, Response, Status}, session::{Session, SessionId}};

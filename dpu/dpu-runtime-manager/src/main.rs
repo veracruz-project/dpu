@@ -133,7 +133,7 @@ pub fn dpu_main() -> Result<()> {
         })?;
         info!("Accepted connection from {:?}.", runtime_manager_socket);
 
-        // Save session to sessions hashmap
+        // Establish secure channel and save session to hashmap
         let session_id = Session::from_socket(runtime_manager_socket)?;
 
         debug!("DPU Runtime Manager::main accept succeeded. Looping");
