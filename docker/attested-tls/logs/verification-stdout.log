@@ -1,0 +1,737 @@
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	gin	[GIN] 2024/02/06 - 18:53:11 | 200 |    1.438678ms |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/06 - 18:53:11 | 201 |     579.504µs |     172.30.0.12 | POST     "/challenge-response/v1/newSession?nonceSize=8"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/06 - 18:53:11 | 200 |     981.599µs |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/06 - 18:53:11 | 200 |   38.040715ms |     172.30.0.12 | POST     "/challenge-response/v1/session/f996c498-c520-11ee-8ebf-363861653039"
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 13:01:17 | 200 |    1.365055ms |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 13:01:17 | 201 |     569.463µs |     172.30.0.12 | POST     "/challenge-response/v1/newSession?nonceSize=8"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 13:01:17 | 200 |     963.818µs |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 13:01:17 | 200 |   29.855717ms |     172.30.0.12 | POST     "/challenge-response/v1/session/fb310e09-c5b8-11ee-bd34-363861653039"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 13:01:50 | 200 |    1.091044ms |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 13:01:50 | 201 |     390.016µs |     172.30.0.12 | POST     "/challenge-response/v1/newSession?nonceSize=8"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 13:01:50 | 200 |     953.238µs |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 13:01:50 | 200 |    1.939578ms |     172.30.0.12 | POST     "/challenge-response/v1/session/0f1c3956-c5b9-11ee-bd34-363861653039"
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 13:46:53 | 200 |    1.352813ms |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 13:46:53 | 201 |     553.502µs |     172.30.0.12 | POST     "/challenge-response/v1/newSession?nonceSize=8"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 13:46:53 | 200 |     1.02526ms |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 13:46:53 | 200 |   34.419611ms |     172.30.0.12 | POST     "/challenge-response/v1/session/5a3acbb4-c5bf-11ee-b0e1-363861653039"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 16:16:16 | 200 |    1.051123ms |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 16:16:16 | 201 |     430.557µs |     172.30.0.12 | POST     "/challenge-response/v1/newSession?nonceSize=8"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 16:16:16 | 200 |     931.358µs |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 16:16:16 | 200 |   74.808106ms |     172.30.0.12 | POST     "/challenge-response/v1/session/386fda8a-c5d4-11ee-b0e1-363861653039"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 16:17:20 | 200 |    1.052703ms |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 16:17:20 | 201 |      483.78µs |     172.30.0.12 | POST     "/challenge-response/v1/newSession?nonceSize=8"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 16:17:20 | 200 |     931.777µs |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 16:17:20 | 200 |    4.337554ms |     172.30.0.12 | POST     "/challenge-response/v1/session/5ed1afdf-c5d4-11ee-b0e1-363861653039"
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	gin	[GIN] 2024/02/09 - 16:51:08 | 200 |   96.938978ms |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/09 - 16:51:08 | 201 |   30.178739ms |     172.30.0.12 | POST     "/challenge-response/v1/newSession?nonceSize=8"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/09 - 16:51:08 | 200 |    1.813473ms |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/09 - 16:51:08 | 200 |  221.102895ms |     172.30.0.12 | POST     "/challenge-response/v1/session/6c3d3162-c76b-11ee-88f2-363861653039"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/09 - 17:02:11 | 200 |    1.162087ms |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/09 - 17:02:11 | 201 |     418.797µs |     172.30.0.12 | POST     "/challenge-response/v1/newSession?nonceSize=8"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/09 - 17:02:11 | 200 |    1.002041ms |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/09 - 17:02:11 | 200 |  136.825216ms |     172.30.0.12 | POST     "/challenge-response/v1/session/f770dd86-c76c-11ee-88f2-363861653039"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/09 - 17:15:13 | 200 |    1.062943ms |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/09 - 17:15:13 | 201 |     422.077µs |     172.30.0.12 | POST     "/challenge-response/v1/newSession?nonceSize=8"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/09 - 17:15:13 | 200 |     934.858µs |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/09 - 17:15:13 | 200 |    4.404136ms |     172.30.0.12 | POST     "/challenge-response/v1/session/c954ab73-c76e-11ee-88f2-363861653039"
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	gin	[GIN] 2024/02/13 - 17:24:39 | 200 |  179.635164ms |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/13 - 17:24:39 | 201 |    56.95305ms |     172.30.0.12 | POST     "/challenge-response/v1/newSession?nonceSize=8"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/13 - 17:24:39 | 200 |      982.28µs |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/13 - 17:24:40 | 200 |  335.135577ms |     172.30.0.12 | POST     "/challenge-response/v1/session/c492ef39-ca94-11ee-9dc3-363861653039"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/13 - 17:25:12 | 200 |     962.558µs |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/13 - 17:25:12 | 201 |     431.878µs |     172.30.0.12 | POST     "/challenge-response/v1/newSession?nonceSize=8"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/13 - 17:25:12 | 200 |     941.138µs |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/13 - 17:25:12 | 200 |  103.087025ms |     172.30.0.12 | POST     "/challenge-response/v1/session/d7e018b4-ca94-11ee-9dc3-363861653039"
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	gin	[GIN] 2024/02/14 - 20:03:46 | 200 |    1.493421ms |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/14 - 20:03:46 | 201 |   27.312038ms |     172.30.0.12 | POST     "/challenge-response/v1/newSession?nonceSize=8"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/14 - 20:03:46 | 200 |    1.023461ms |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/14 - 20:03:46 | 200 |   93.083228ms |     172.30.0.12 | POST     "/challenge-response/v1/session/2938635f-cb74-11ee-afbd-363861653039"
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	gin	[GIN] 2024/02/15 - 01:30:25 | 200 |    1.255131ms |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/15 - 01:30:25 | 201 |     569.983µs |     172.30.0.12 | POST     "/challenge-response/v1/newSession?nonceSize=8"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/15 - 01:30:25 | 200 |     958.218µs |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/15 - 01:30:25 | 200 |     69.1733ms |     172.30.0.12 | POST     "/challenge-response/v1/session/cb5f2e6d-cba1-11ee-aee1-363861653039"
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	
+INFO	gin	[GIN] 2024/02/15 - 15:33:36 | 200 |    1.235969ms |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/15 - 15:33:36 | 201 |     569.963µs |     172.30.0.12 | POST     "/challenge-response/v1/newSession?nonceSize=8"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/15 - 15:33:36 | 200 |     951.618µs |     172.30.0.12 | GET      "/.well-known/veraison/verification"
+INFO	gin	
+INFO	gin	[GIN] 2024/02/15 - 15:33:36 | 200 |   30.416208ms |     172.30.0.12 | POST     "/challenge-response/v1/session/9600108e-cc17-11ee-bbbd-363861653039"
+INFO	gin	
+INFO	Initializing Verification Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing verifier
+INFO	initializing verification API service	{"address": "0.0.0.0:8080"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/newSession --> github.com/veraison/services/verification/api.IHandler.NewChallengeResponse-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.SubmitEvidence-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.GetSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] DELETE /challenge-response/v1/session/:id --> github.com/veraison/services/verification/api.IHandler.DelSession-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/verification --> github.com/veraison/services/verification/api.IHandler.GetWellKnownVerificationInfo-fm (3 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+INFO	gin	

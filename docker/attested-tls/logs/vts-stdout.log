@@ -1,0 +1,770 @@
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/psa-attestation-token
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/pem-certificate-chain
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	vts	get attestation	{"media-type": "application/vnd.parallaxsecond.key-attestation.tpm", "tenant-id": "0"}
+WARN	vts	{"detail":["no trust anchor for [PARSEC_TPM://0/Abm5Qr0ZBnn9JCCWMugRE/GX/giif7I954/P0oraxS5m]"],"detail-type":"error","error":"bad evidence"}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/psa-attestation-token
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/pem-certificate-chain
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	vts	get attestation	{"media-type": "application/vnd.parallaxsecond.key-attestation.tpm", "tenant-id": "0"}
+WARN	vts	{"detail":["no trust anchor for [PARSEC_TPM://0/ATgXtM1Onnm+qQD5TPg/XPvesXGoNoDiJCpNWRd9E8UT]"],"detail-type":"error","error":"bad evidence"}
+INFO	vts	get attestation	{"media-type": "application/vnd.parallaxsecond.key-attestation.tpm", "tenant-id": "0"}
+WARN	vts	{"detail":["no trust anchor for [PARSEC_TPM://0/ATgXtM1Onnm+qQD5TPg/XPvesXGoNoDiJCpNWRd9E8UT]"],"detail-type":"error","error":"bad evidence"}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/pem-certificate-chain
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/psa-attestation-token
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	vts	get attestation	{"media-type": "application/vnd.parallaxsecond.key-attestation.tpm", "tenant-id": "0"}
+WARN	vts	{"detail":["no trust anchor for [PARSEC_TPM://0/ATE1mXe5CDaEDTu/gjObVQDVh1aFI5IMquas3hgusR9H]"],"detail-type":"error","error":"bad evidence"}
+INFO	vts	added trust anchor	{"keys": ["PARSEC_TPM://0/AdcJPu2nKsXIawm2RI6L7vRhja9hV+tKYEWakpYsBz0N"]}
+INFO	vts	added reference values	{"keys": ["PARSEC_TPM://0/d10e4bd6-7e02-4d2c-bf1a-69ae22680478"]}
+INFO	vts	added reference values	{"keys": ["PARSEC_TPM://0/d10e4bd6-7e02-4d2c-bf1a-69ae22680478"]}
+INFO	vts	added reference values	{"keys": ["PARSEC_TPM://0/d10e4bd6-7e02-4d2c-bf1a-69ae22680478"]}
+INFO	vts	get attestation	{"media-type": "application/vnd.parallaxsecond.key-attestation.tpm", "tenant-id": "0"}
+INFO	vts	evaluated attestation result	{"attestation-result": {"ear.verifier-id":{"build":"N/A","developer":"Veraison Project"},"eat_nonce":"UQkEcTyEGK0=","eat_profile":"tag:github.com,2023:veraison/ear","iat":1707322576,"submods":{"PARSEC_TPM":{"ear.appraisal-policy-id":"policy:PARSEC_TPM","ear.status":"affirming","ear.trustworthiness-vector":{"configuration":0,"executables":2,"file-system":0,"hardware":2,"instance-identity":2,"runtime-opaque":0,"sourced-data":0,"storage-opaque":0},"ear.veraison.annotated-evidence":{"kat":{"certInfo":"/1RDR4AXACIAC5szPUSNjlag6JlpAPQl9TyA+QP2p9GGibn2xZhND3b6AAgAAQIDBAUGBwAAAAAAd+xm+Hyqd0x4TPQBdGVKuyQWuX8AIgALeRKAG5g2arp0AB1JhooTZhJnos0zQIeqgh6wEx0MKK4AIgALtagg8+v1cgNKNNOrDkIoE99NxZ3H8Fhps/erUC09fXE=","kid":"AdcJPu2nKsXIawm2RI6L7vRhja9hV+tKYEWakpYsBz0N","pubArea":"ACMACwAEAHIAAAAQABgACwADABAAIBZS4ix96E/v8YhW6Ux2h3SlqUyvDTFyIUy4A2EA6H+eACDssx8P3rf2UpaZdZTtL1YGQdxCjrv5QKGVAPElqIyCJw==","sig":"ABgACwAgZnnUYomPPlbdgns8D7VwuXLT6k6Bb+C9ujoYz8hwuecAILw6Li59XS+7JjrfZozR3JhWltSTdZgip25uFXIlbeY4","tpmVer":"2.0"},"pat":{"attestInfo":"/1RDR4AYACIAC5szPUSNjlag6JlpAPQl9TyA+QP2p9GGibn2xZhND3b6AAgAAQIDBAUGBwAAAAAAd+yX+Hyqd0x4TPQBdGVKuyQWuX8AAAABAAsDBwAAACAuqauRmNFjgAdADNLDvvHMdFuGS3YBGg4bxSGArGRS1A==","kid":"AdcJPu2nKsXIawm2RI6L7vRhja9hV+tKYEWakpYsBz0N","sig":"ABgACwAgHg7bw5x60Jvuf9Q7GMBcagtzHTaG448TME90F92HBaoAIOzxtU36gyTF6GEBQ+UG9Iq0uNdVKBF1PP4Vz5I4VuFE","tpmVer":"2.0"}},"ear.veraison.key-attestation":{"akpub":"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEFlLiLH3oT-_xiFbpTHaHdKWpTK8NMXIhTLgDYQDof57ssx8P3rf2UpaZdZTtL1YGQdxCjrv5QKGVAPElqIyCJw"}}}}}
+INFO	vts	get attestation	{"media-type": "application/vnd.parallaxsecond.key-attestation.tpm", "tenant-id": "0"}
+INFO	vts	evaluated attestation result	{"attestation-result": {"ear.verifier-id":{"build":"N/A","developer":"Veraison Project"},"eat_nonce":"8-UcB0CSlf8=","eat_profile":"tag:github.com,2023:veraison/ear","iat":1707322640,"submods":{"PARSEC_TPM":{"ear.appraisal-policy-id":"policy:PARSEC_TPM","ear.status":"affirming","ear.trustworthiness-vector":{"configuration":0,"executables":2,"file-system":0,"hardware":2,"instance-identity":2,"runtime-opaque":0,"sourced-data":0,"storage-opaque":0},"ear.veraison.annotated-evidence":{"kat":{"certInfo":"/1RDR4AXACIAC5szPUSNjlag6JlpAPQl9TyA+QP2p9GGibn2xZhND3b6AAgAAQIDBAUGBwAAAAAAeOgj+Hyqd0x4TPQBdGVKuyQWuX8AIgALQPYYV7Z8vCEEZxn1mkaTZh7TLIvWxOs27nGcfT6mE+oAIgAL+GdHnBkVIwtP2AO75xXsXf93AxTQD5CAt6wg05pyKjo=","kid":"AdcJPu2nKsXIawm2RI6L7vRhja9hV+tKYEWakpYsBz0N","pubArea":"ACMACwAEAHIAAAAQABgACwADABAAIBwsOoCMcuq4pvs4lZo/vwZEkudlA1KoKI4kZiExYNprACDIi4Cpp2Hpl9UDTawAz3A5ccubE3EAVNe0l2ZHQjl0+g==","sig":"ABgACwAg29/EYyVeArDT8mTxlJwpmd5h1egF9NVHoF07w2LNwhgAIEt21L0iuzajz6bRtylVphUd5Ln8SRq4QLipfaRBki/o","tpmVer":"2.0"},"pat":{"attestInfo":"/1RDR4AYACIAC5szPUSNjlag6JlpAPQl9TyA+QP2p9GGibn2xZhND3b6AAgAAQIDBAUGBwAAAAAAeOgk+Hyqd0x4TPQBdGVKuyQWuX8AAAABAAsDBwAAACAuqauRmNFjgAdADNLDvvHMdFuGS3YBGg4bxSGArGRS1A==","kid":"AdcJPu2nKsXIawm2RI6L7vRhja9hV+tKYEWakpYsBz0N","sig":"ABgACwAggcvSlnATp+q8cDklnXBxW/snV7oAFlkbuD2owqvsBeoAIO+BcuQCABgNv0XdwhdUivRiZ7duD80gzPB9PQR26SRO","tpmVer":"2.0"}},"ear.veraison.key-attestation":{"akpub":"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHCw6gIxy6rim-ziVmj-_BkSS52UDUqgojiRmITFg2mvIi4Cpp2Hpl9UDTawAz3A5ccubE3EAVNe0l2ZHQjl0-g"}}}}}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/psa-attestation-token
+INFO		application/pem-certificate-chain
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/pem-certificate-chain
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/psa-attestation-token
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/psa-attestation-token
+INFO		application/pem-certificate-chain
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	vts	get attestation	{"media-type": "application/vnd.parallaxsecond.key-attestation.tpm", "tenant-id": "0"}
+WARN	vts	{"detail":["no trust anchor for [PARSEC_TPM://0/AfHlSznV9fEQX0njA2DQEkuAXyfi97yrWp6VUQh3nGJp]"],"detail-type":"error","error":"bad evidence"}
+INFO	vts	added trust anchor	{"keys": ["PARSEC_TPM://0/AfHlSznV9fEQX0njA2DQEkuAXyfi97yrWp6VUQh3nGJp"]}
+INFO	vts	added reference values	{"keys": ["PARSEC_TPM://0/d10e4bd6-7e02-4d2c-bf1a-69ae22680478"]}
+INFO	vts	added reference values	{"keys": ["PARSEC_TPM://0/d10e4bd6-7e02-4d2c-bf1a-69ae22680478"]}
+INFO	vts	added reference values	{"keys": ["PARSEC_TPM://0/d10e4bd6-7e02-4d2c-bf1a-69ae22680478"]}
+INFO	vts	get attestation	{"media-type": "application/vnd.parallaxsecond.key-attestation.tpm", "tenant-id": "0"}
+INFO	vts	evaluated attestation result	{"attestation-result": {"ear.verifier-id":{"build":"N/A","developer":"Veraison Project"},"eat_nonce":"lQqxUMckbLQ=","eat_profile":"tag:github.com,2023:veraison/ear","iat":1707498131,"submods":{"PARSEC_TPM":{"ear.appraisal-policy-id":"policy:PARSEC_TPM","ear.status":"affirming","ear.trustworthiness-vector":{"configuration":0,"executables":2,"file-system":0,"hardware":2,"instance-identity":2,"runtime-opaque":0,"sourced-data":0,"storage-opaque":0},"ear.veraison.annotated-evidence":{"kat":{"certInfo":"/1RDR4AXACIAC3k/+FpeuuevfGiLBWMQ5w5J+z4ipc8g1n/sKIi85idoAAgAAQIDBAUGBwAAAAAAN7XDa698xdVZWuMByBgaw8386VoAIgALfRouRYE2Ay0lp3AgFDvHbuXNFDi8AqkPjIMCKXGqB94AIgALmOoREtizk/Ck22GPRPnaytg3I7PQgnpnAr1fg/JWvvE=","kid":"AfHlSznV9fEQX0njA2DQEkuAXyfi97yrWp6VUQh3nGJp","pubArea":"ACMACwAEAHIAAAAQABgACwADABAAIBtI+1KnANZ8OxeHKq5FU09aeZKW+axzCNQwjL3xWD50ACBcMp53Wzoa3JnvZPXSfFlkktRpyfZP1ouDiCBE150Iog==","sig":"ABgACwAg/jLL8ygH5xJP2dHzmptHeeeu98SdBYSOgyVfjdQpAPIAIAKFVndoxDM+5FJ6RzdsdlJVjr9frPumttR+rO0UH7hB","tpmVer":"2.0"},"pat":{"attestInfo":"/1RDR4AYACIAC3k/+FpeuuevfGiLBWMQ5w5J+z4ipc8g1n/sKIi85idoAAgAAQIDBAUGBwAAAAAAN7X9a698xdVZWuMByBgaw8386VoAAAABAAsDBwAAACAuqauRmNFjgAdADNLDvvHMdFuGS3YBGg4bxSGArGRS1A==","kid":"AfHlSznV9fEQX0njA2DQEkuAXyfi97yrWp6VUQh3nGJp","sig":"ABgACwAgB35LFg47bthsWPzdd1dGU2UaVzcgshnx2NeyJ57Dmy4AIBtgRN03W+d0dxA6OPS9w1z66R9x8YRTTnX1G1yoGwtQ","tpmVer":"2.0"}},"ear.veraison.key-attestation":{"akpub":"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEG0j7UqcA1nw7F4cqrkVTT1p5kpb5rHMI1DCMvfFYPnRcMp53Wzoa3JnvZPXSfFlkktRpyfZP1ouDiCBE150Iog"}}}}}
+INFO	vts	get attestation	{"media-type": "application/vnd.parallaxsecond.key-attestation.tpm", "tenant-id": "0"}
+INFO	vts	evaluated attestation result	{"attestation-result": {"ear.verifier-id":{"build":"N/A","developer":"Veraison Project"},"eat_nonce":"5VcwRmJvDyg=","eat_profile":"tag:github.com,2023:veraison/ear","iat":1707498913,"submods":{"PARSEC_TPM":{"ear.appraisal-policy-id":"policy:PARSEC_TPM","ear.status":"affirming","ear.trustworthiness-vector":{"configuration":0,"executables":2,"file-system":0,"hardware":2,"instance-identity":2,"runtime-opaque":0,"sourced-data":0,"storage-opaque":0},"ear.veraison.annotated-evidence":{"kat":{"certInfo":"/1RDR4AXACIAC3k/+FpeuuevfGiLBWMQ5w5J+z4ipc8g1n/sKIi85idoAAgAAQIDBAUGBwAAAAAAQ6MDa698xdVZWuMByBgaw8386VoAIgALdCLM/WqngjO+cDpOkxB+QuNjJw10B8n+jodcwoA9ejsAIgALeNWWxFi1OpwagblH51MWkJaZNDdtVrbPlu2raVd3+nY=","kid":"AfHlSznV9fEQX0njA2DQEkuAXyfi97yrWp6VUQh3nGJp","pubArea":"ACMACwAEAHIAAAAQABgACwADABAAICVd79oiXpOeRZEGI+nNMU7QL1rtt5kcwWNZwUR60N8dACBHU35KM1+LLpnjLaBYg415IhHngYaVC4+JGTFZu87y9g==","sig":"ABgACwAgzFdxxmRAEX5uZZnc3C9glu0lOSjgaG4azmrUkt5vxekAIK2QWKGMuqxvcBxNjq1MZp3Cbq8OmoqncIgllOWoPKg2","tpmVer":"2.0"},"pat":{"attestInfo":"/1RDR4AYACIAC3k/+FpeuuevfGiLBWMQ5w5J+z4ipc8g1n/sKIi85idoAAgAAQIDBAUGBwAAAAAAQ6M9a698xdVZWuMByBgaw8386VoAAAABAAsDBwAAACAuqauRmNFjgAdADNLDvvHMdFuGS3YBGg4bxSGArGRS1A==","kid":"AfHlSznV9fEQX0njA2DQEkuAXyfi97yrWp6VUQh3nGJp","sig":"ABgACwAg2AMO89gvTmKdH8jMVvMHbWip3gi2m2agxVPQ7+huRycAICwlJIw/w8tDEB/QgdvBE3ZAx4YtjXi3JAjsWJGXYG/z","tpmVer":"2.0"}},"ear.veraison.key-attestation":{"akpub":"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEJV3v2iJek55FkQYj6c0xTtAvWu23mRzBY1nBRHrQ3x1HU35KM1-LLpnjLaBYg415IhHngYaVC4-JGTFZu87y9g"}}}}}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/psa-attestation-token
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/pem-certificate-chain
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/psa-attestation-token
+INFO		application/pem-certificate-chain
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	vts	get attestation	{"media-type": "application/vnd.parallaxsecond.key-attestation.tpm", "tenant-id": "0"}
+WARN	vts	{"detail":["no trust anchor for [PARSEC_TPM://0/AeuHbh4jXk82JXAv7SXB8GubQUMDeWNcQJutOIHjqVQ2]"],"detail-type":"error","error":"bad evidence"}
+INFO	vts	added trust anchor	{"keys": ["PARSEC_TPM://0/AeuHbh4jXk82JXAv7SXB8GubQUMDeWNcQJutOIHjqVQ2"]}
+INFO	vts	added reference values	{"keys": ["PARSEC_TPM://0/d10e4bd6-7e02-4d2c-bf1a-69ae22680478"]}
+INFO	vts	added reference values	{"keys": ["PARSEC_TPM://0/d10e4bd6-7e02-4d2c-bf1a-69ae22680478"]}
+INFO	vts	added reference values	{"keys": ["PARSEC_TPM://0/d10e4bd6-7e02-4d2c-bf1a-69ae22680478"]}
+INFO	vts	get attestation	{"media-type": "application/vnd.parallaxsecond.key-attestation.tpm", "tenant-id": "0"}
+INFO	vts	evaluated attestation result	{"attestation-result": {"ear.verifier-id":{"build":"N/A","developer":"Veraison Project"},"eat_nonce":"Rjj52eem8Vs=","eat_profile":"tag:github.com,2023:veraison/ear","iat":1707845112,"submods":{"PARSEC_TPM":{"ear.appraisal-policy-id":"policy:PARSEC_TPM","ear.status":"affirming","ear.trustworthiness-vector":{"configuration":0,"executables":2,"file-system":0,"hardware":2,"instance-identity":2,"runtime-opaque":0,"sourced-data":0,"storage-opaque":0},"ear.veraison.annotated-evidence":{"kat":{"certInfo":"/1RDR4AXACIACzQ2hjLMo4CIQQ7aIhWDbhK5boelHwnzJ5He1xfXUm07AAgAAQIDBAUGBwAAAAAAmx80zwWYsK5lke4BAnVUjnB/Iu0AIgALTWYNuSeCZDrzzoHlbi6Nj13TB1pXIU/EHuTc11tf4k0AIgALQcNrZRGYrzJEi/1OO2TwAtBmpNQ+fd99ttzs9sowWOE=","kid":"AeuHbh4jXk82JXAv7SXB8GubQUMDeWNcQJutOIHjqVQ2","pubArea":"ACMACwAEAHIAAAAQABgACwADABAAIN3d3Y0HwBzioNHqb12bkd/R9/3z0052gzdkRwHKgqPwACC1/vQvzHizUkNdVq6P7JivcPGVjARj9WQWlxELI7bw9Q==","sig":"ABgACwAgBgodWnaCM+fLnqbxVgawM3AVhFcBZ0YM1a2DRvDQ7hAAIGZqpyl/HD06Y7s3bMXmqnHIcZsZIk59APnTd3PdGJLm","tpmVer":"2.0"},"pat":{"attestInfo":"/1RDR4AYACIACzQ2hjLMo4CIQQ7aIhWDbhK5boelHwnzJ5He1xfXUm07AAgAAQIDBAUGBwAAAAAAmx9uzwWYsK5lke4BAnVUjnB/Iu0AAAABAAsDBwAAACAuqauRmNFjgAdADNLDvvHMdFuGS3YBGg4bxSGArGRS1A==","kid":"AeuHbh4jXk82JXAv7SXB8GubQUMDeWNcQJutOIHjqVQ2","sig":"ABgACwAg/MwYGQLbcva+Btb5vg6gHBUsrt6pLG++ce18z/bJm6YAIIwpNX4RqKImUWxz8WSp8/QRDKMPWFMv9Zuo9Xbj+/0H","tpmVer":"2.0"}},"ear.veraison.key-attestation":{"akpub":"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE3d3djQfAHOKg0epvXZuR39H3_fPTTnaDN2RHAcqCo_C1_vQvzHizUkNdVq6P7JivcPGVjARj9WQWlxELI7bw9Q"}}}}}
+INFO	terminated received, exiting
+INFO	stopping service
+WARN	plugin	error closing client during Kill	{"err": "unexpected EOF"}
+WARN	plugin	plugin failed to exit gracefully
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/pem-certificate-chain
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/psa-attestation-token
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/psa-attestation-token
+INFO		application/pem-certificate-chain
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	terminated received, exiting
+INFO	stopping service
+WARN	plugin	error closing client during Kill	{"err": "unexpected EOF"}
+WARN	plugin	plugin failed to exit gracefully
+WARN	plugin	error closing client during Kill	{"err": "unexpected EOF"}
+WARN	plugin	plugin failed to exit gracefully
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+WARN	plugin	error closing client during Kill	{"err": "unexpected EOF"}
+WARN	plugin	plugin failed to exit gracefully
+INFO	Evidence media types:
+INFO		application/pem-certificate-chain
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/psa-attestation-token
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/psa-attestation-token
+INFO		application/pem-certificate-chain
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	terminated received, exiting
+INFO	stopping service
+WARN	plugin	error closing client during Kill	{"err": "unexpected EOF"}
+WARN	plugin	plugin failed to exit gracefully
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/psa-attestation-token
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/pem-certificate-chain
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	terminated received, exiting
+INFO	stopping service
+WARN	plugin	error closing client during Kill	{"err": "unexpected EOF"}
+WARN	plugin	plugin failed to exit gracefully
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/pem-certificate-chain
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/psa-attestation-token
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/psa-attestation-token
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO		application/pem-certificate-chain
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO		application/psa-attestation-token
+INFO		application/pem-certificate-chain
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/psa-attestation-token
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/pem-certificate-chain
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	terminated received, exiting
+INFO	stopping service
+WARN	plugin	error closing client during Kill	{"err": "unexpected EOF"}
+WARN	plugin	plugin failed to exit gracefully
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/pem-certificate-chain
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/psa-attestation-token
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/psa-attestation-token
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/pem-certificate-chain
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	terminated received, exiting
+INFO	stopping service
+WARN	plugin	error closing client during Kill	{"err": "unexpected EOF"}
+WARN	plugin	plugin failed to exit gracefully
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/pem-certificate-chain
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/psa-attestation-token
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/psa-attestation-token
+INFO		application/pem-certificate-chain
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	vts	get attestation	{"media-type": "application/vnd.parallaxsecond.key-attestation.tpm", "tenant-id": "0"}
+WARN	vts	{"detail":["no trust anchor for [PARSEC_TPM://0/AVyy7PtsgcYbq3HI7xinEdne3zlj80i4qPvjpHG8A3QV]"],"detail-type":"error","error":"bad evidence"}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/psa-attestation-token
+INFO		application/pem-certificate-chain
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	vts	added trust anchor	{"keys": ["PARSEC_TPM://0/ARj654pdbABtoRQ6mORML+UX2aGhMciA/PV28TNK5w44"]}
+INFO	vts	added reference values	{"keys": ["PARSEC_TPM://0/d10e4bd6-7e02-4d2c-bf1a-69ae22680478"]}
+INFO	vts	added reference values	{"keys": ["PARSEC_TPM://0/d10e4bd6-7e02-4d2c-bf1a-69ae22680478"]}
+INFO	vts	added reference values	{"keys": ["PARSEC_TPM://0/d10e4bd6-7e02-4d2c-bf1a-69ae22680478"]}
+INFO	vts	get attestation	{"media-type": "application/vnd.parallaxsecond.key-attestation.tpm", "tenant-id": "0"}
+INFO	vts	evaluated attestation result	{"attestation-result": {"ear.verifier-id":{"build":"N/A","developer":"Veraison Project"},"eat_nonce":"9FPdvwu-tCE=","eat_profile":"tag:github.com,2023:veraison/ear","iat":1707960625,"submods":{"PARSEC_TPM":{"ear.appraisal-policy-id":"policy:PARSEC_TPM","ear.status":"affirming","ear.trustworthiness-vector":{"configuration":0,"executables":2,"file-system":0,"hardware":2,"instance-identity":2,"runtime-opaque":0,"sourced-data":0,"storage-opaque":0},"ear.veraison.annotated-evidence":{"kat":{"certInfo":"/1RDR4AXACIAC8MFAf0qFiburPRwBrrxYJtSnhNVeqF4FhqxOUDmoux2AAgAAQIDBAUGBwAAAAAAD6VB++WU5Gdb1UgBlitpEKFgowkAIgALAMxCmwbJ3BRFKrlfW+lR46LUvpeA2SkS0pkzNNx/5H4AIgALRZLurQ4UWmmM45W1FPNH0rtltdgtQSK8QKnaMJ6/RmY=","kid":"ARj654pdbABtoRQ6mORML+UX2aGhMciA/PV28TNK5w44","pubArea":"ACMACwAEAHIAAAAQABgACwADABAAILZSCyOSFt2Prn3uarpz3TmUm9aNGoSQPUCD9VBhZG2yACDPA4MnnzqFXjN9BMwFzZeBBN1QO++KMU+qt7gz6Yo5Sw==","sig":"ABgACwAgwigLFqOWIi19QsKxuZjh5eTw3b3vGhM+F6y2r6Iv4EUAIG+Cl8md70PZP7/qBEdtnt7iJ+PTxFmDSxqxjfOWKMtU","tpmVer":"2.0"},"pat":{"attestInfo":"/1RDR4AYACIAC8MFAf0qFiburPRwBrrxYJtSnhNVeqF4FhqxOUDmoux2AAgAAQIDBAUGBwAAAAAAD6V7++WU5Gdb1UgBlitpEKFgowkAAAABAAsDBwAAACAuqauRmNFjgAdADNLDvvHMdFuGS3YBGg4bxSGArGRS1A==","kid":"ARj654pdbABtoRQ6mORML+UX2aGhMciA/PV28TNK5w44","sig":"ABgACwAgcvXJqjUOadqzzHVIfAIck1cqawZKt9oshN4ZUWSH8PIAICDp/iyvD2V7dmytKJGOVm8hWrdfagozlCkmFSml56SI","tpmVer":"2.0"}},"ear.veraison.key-attestation":{"akpub":"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEtlILI5IW3Y-ufe5qunPdOZSb1o0ahJA9QIP1UGFkbbLPA4MnnzqFXjN9BMwFzZeBBN1QO--KMU-qt7gz6Yo5Sw"}}}}}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/psa-attestation-token
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/pem-certificate-chain
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	vts	added trust anchor	{"keys": ["PARSEC_TPM://0/AS6/elmHxxKKPNjQ8lZLUhbGvlS9nG0Jq0r5nUQnJeyK"]}
+INFO	vts	added reference values	{"keys": ["PARSEC_TPM://0/d10e4bd6-7e02-4d2c-bf1a-69ae22680478"]}
+INFO	vts	added reference values	{"keys": ["PARSEC_TPM://0/d10e4bd6-7e02-4d2c-bf1a-69ae22680478"]}
+INFO	vts	added reference values	{"keys": ["PARSEC_TPM://0/d10e4bd6-7e02-4d2c-bf1a-69ae22680478"]}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/pem-certificate-chain
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/psa-attestation-token
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/pem-certificate-chain
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO		application/psa-attestation-token
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	vts	added trust anchor	{"keys": ["PARSEC_TPM://0/ATgDQmrMLD9Q+wkP3ehwzcYu1lh4y+cC6OqE0MkmxZt8"]}
+INFO	vts	added reference values	{"keys": ["PARSEC_TPM://0/d10e4bd6-7e02-4d2c-bf1a-69ae22680478"]}
+INFO	vts	added reference values	{"keys": ["PARSEC_TPM://0/d10e4bd6-7e02-4d2c-bf1a-69ae22680478"]}
+INFO	vts	added reference values	{"keys": ["PARSEC_TPM://0/d10e4bd6-7e02-4d2c-bf1a-69ae22680478"]}
+INFO	vts	get attestation	{"media-type": "application/vnd.parallaxsecond.key-attestation.tpm", "tenant-id": "0"}
+INFO	vts	evaluated attestation result	{"attestation-result": {"ear.verifier-id":{"build":"N/A","developer":"Veraison Project"},"eat_nonce":"GSQzagwkvuI=","eat_profile":"tag:github.com,2023:veraison/ear","iat":1708011216,"submods":{"PARSEC_TPM":{"ear.appraisal-policy-id":"policy:PARSEC_TPM","ear.status":"affirming","ear.trustworthiness-vector":{"configuration":0,"executables":2,"file-system":0,"hardware":2,"instance-identity":2,"runtime-opaque":0,"sourced-data":0,"storage-opaque":0},"ear.veraison.annotated-evidence":{"kat":{"certInfo":"/1RDR4AXACIAC3dWzkrNKx1uvVncu/mkl4scQMnX32IZIPj01cUdnhyGAAgAAQIDBAUGBwAAAAAAA5KnVXyrbWAbCXIB6H6SwMPbZ5QAIgALHiektbvZ2U5KYeXXAwNNXPQMcQmgFOovYx9ZoF4jsqMAIgALAiVwwHsOOWgBSsmSxY7HdguTyB+PorELcXVQI01/Q4A=","kid":"ATgDQmrMLD9Q+wkP3ehwzcYu1lh4y+cC6OqE0MkmxZt8","pubArea":"ACMACwAEAHIAAAAQABgACwADABAAIC1J30EPK/cj9sLnBbjzyZdGE3pX+MrA9OkLPuU2BYrmACANOHcXgPd9Nhdg8vaoOuGtPwebQAIb4cgjHK9W8YXIQQ==","sig":"ABgACwAgkEqNE1BJ1CiwCQ32tbeEOmVhlSZdsmMH6dabPJIxwhgAIBZXo16xBrDGkEI7EKfwKltATRhc01dpIJSU7eKPk03x","tpmVer":"2.0"},"pat":{"attestInfo":"/1RDR4AYACIAC3dWzkrNKx1uvVncu/mkl4scQMnX32IZIPj01cUdnhyGAAgAAQIDBAUGBwAAAAAAA5LhVXyrbWAbCXIB6H6SwMPbZ5QAAAABAAsDBwAAACAuqauRmNFjgAdADNLDvvHMdFuGS3YBGg4bxSGArGRS1A==","kid":"ATgDQmrMLD9Q+wkP3ehwzcYu1lh4y+cC6OqE0MkmxZt8","sig":"ABgACwAgUPQ5e70CSrfJL2maj9RhG9vPvwoKgGvKUvPy9SC0ZbsAILjUUUbvPtKwzjM1yy6MQFgcXjaAPBYo2YMQs8Dj0qcT","tpmVer":"2.0"}},"ear.veraison.key-attestation":{"akpub":"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAELUnfQQ8r9yP2wucFuPPJl0YTelf4ysD06Qs-5TYFiuYNOHcXgPd9Nhdg8vaoOuGtPwebQAIb4cgjHK9W8YXIQQ"}}}}}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
+INFO	initializing stores
+INFO	ta-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/ta-store.sql", "table": "kvstore"}
+INFO	en-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/en-store.sql", "table": "kvstore"}
+INFO	po-store	store opened	{"driver": "sqlite3", "datasource": "stores/vts/po-store.sql", "table": "kvstore"}
+INFO	initializing policy manager
+INFO	policy	agent created	{"agent": "opa"}
+INFO	loading attestation schemes
+INFO	Evidence media types:
+INFO		application/vnd.parallaxsecond.key-attestation.cca
+INFO		application/eat-cwt; profile=http://arm.com/psa/2.0.0
+INFO		application/pem-certificate-chain
+INFO		application/vnd.enacttrust.tpm-evidence
+INFO		application/eat-collection; profile=http://arm.com/CCA-SSD/1.0.0
+INFO		application/psa-attestation-token
+INFO		application/vnd.parallaxsecond.key-attestation.tpm
+INFO	Endorsement media types:
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/cca/ssd/1
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:tpm"
+INFO		application/corim-unsigned+cbor; profile="tag:github.com/parallaxsecond,2023-03-03:cca"
+INFO		application/corim-unsigned+cbor; profile=http://arm.com/psa/iot/1
+INFO		application/corim-unsigned+cbor; profile=http://enacttrust.com/veraison/1.0.0
+INFO	loading EAR signer
+INFO	initializing service
+INFO	vts	listening for GRPC requests	{"address": ":50051"}
+INFO	terminated received, exiting
+INFO	stopping service
+INFO	bye!
