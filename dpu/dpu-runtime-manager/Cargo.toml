@@ -12,6 +12,4 @@ getrandom = "0.2.10"
 hex = { version = "0.4.2" }
 lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
 log = "0.4.13"
-mbedtls = { path = "../../common/rust-mbedtls/mbedtls", default-features = false, features = ["std", "aesni", "padlock", "tls13"] }
-transport = { path = "../../common/transport" }
-utils = { path = "../../common/utils" }
+transport = { path = "../../common/transport", features = ["initiator", "responder"] }

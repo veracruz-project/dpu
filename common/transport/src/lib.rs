@@ -3,3 +3,7 @@ pub mod messages;
 pub mod session;
 pub mod tcp;
 pub mod tls;
+#[cfg(feature = "responder")]
+pub mod tls_client;
+#[cfg(feature = "initiator")]
+pub mod tls_server;

@@ -15,7 +15,6 @@ use bincode::{deserialize, serialize};
 use log::{error, debug};
 use mbedtls::ssl::Context;
 use serde::{de::DeserializeOwned, Serialize};
-use std::net::TcpStream;
 
 // XXX: this is very ugly
 pub const ROOT_CA_CERT: &'static str = concat!(include_str!("../keys/ca.crt"),"\0");
@@ -26,19 +25,20 @@ pub const PEM_CERT: &'static str = concat!(include_str!("../keys/user.crt"),"\0"
 ///
 /// Fails if the message cannot be serialized, or if the serialized message
 /// cannot be transmitted.
-pub (crate) fn send_message<T>(tls_context: &mut Context<TcpStream>, data: T) -> Result<()>
+pub (crate) fn send_message<T, U>(context: &mut Context<U>, message: T) -> Result<()>
 where
     T: Serialize,
+    U: std::io::Read + std::io::Write + std::fmt::Debug,
 {
-    debug!("Sending message on {:?} through TLS", tls_context.io());
+    debug!("Sending on {:?} through TLS", context.io());
 
-    let message = serialize(&data).map_err(|e| {
+    let buffer = serialize(&message).map_err(|e| {
         error!("Failed to serialize message.  Error produced: {}.", e);
         e
     })?;
 
-    send_buffer(tls_context, &message).map_err(|e| {
-        error!("Failed to send message.  Error produced: {}.", e);
+    send_buffer(context, &buffer).map_err(|e| {
+        error!("Failed to send buffer.  Error produced: {}.", e);
         e
     })?;
 
@@ -49,18 +49,17 @@ where
 ///
 /// Fails if no message can be received, or if the received message cannot be
 /// deserialized.
-pub (crate) fn receive_message<T>(tls_context: &mut Context<TcpStream>) -> Result<T>
+pub (crate) fn receive_message<T, U>(context: &mut Context<U>) -> Result<T>
 where
     T: DeserializeOwned,
+    U: std::io::Read + std::io::Write + std::fmt::Debug,
 {
-    debug!("Receiving message on {:?} through TLS", tls_context.io());
+    debug!("Receiving on {:?} through TLS", context.io());
 
-    let buffer = receive_buffer(tls_context)
-        .map_err(|e| {
-            error!("Failed to receive buffer.  Error produced: {}.", e);
-            e
-        }
-    )?;
+    let buffer = receive_buffer(context).map_err(|e| {
+        error!("Failed to receive buffer.  Error produced: {}.", e);
+        e
+    })?;
 
     let message: T = deserialize(&buffer).map_err(|e| {
         error!("Failed to deserialize message.  Error produced: {}.", e);
