@@ -9,7 +9,7 @@ edition = "2018"
 anyhow = "1.0.14"
 getrandom = "0.2.10"
 log = "0.4.13"
-mbedtls = { path = "../rust-mbedtls/mbedtls", default-features = false, features = ["std", "aesni", "padlock", "tls13"] }
+mbedtls = { git = "https://github.com/gbryant-arm/rust-mbedtls", branch = "parsec-attestation-server", default-features = false, features = ["std", "aesni", "padlock", "tls13", "debug"] }
 nix = "0.26"
 proxy-attestation-client = { git = "https://github.com/veracruz-project/proxy-attestation-client", tag = "v0.3" }
 psa-attestation = { path = "../psa-attestation", features = ["linux"] }

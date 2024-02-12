@@ -1,4 +1,7 @@
 //! TLS server
+//! Reimplementation of the Mbed TLS examples used in the attested TLS
+//! proof-of concept (https://github.com/CCC-Attestation/attested-tls-poc,
+//! Apache 2.0 license)
 
 use crate::tls;
 use anyhow::Result;

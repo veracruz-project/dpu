@@ -20,6 +20,7 @@ use std::net::TcpStream;
 ///
 /// Fails if the message cannot be serialized, or if the serialized message
 /// cannot be transmitted.
+#[allow(dead_code)]
 pub (crate) fn send_message<T>(socket: &mut TcpStream, data: T) -> Result<()>
 where
     T: Serialize,
@@ -43,6 +44,7 @@ where
 ///
 /// Fails if no message can be received, or if the received message cannot be
 /// deserialized.
+#[allow(dead_code)]
 pub (crate) fn receive_message<T>(socket: &mut TcpStream) -> Result<T>
 where
     T: DeserializeOwned,

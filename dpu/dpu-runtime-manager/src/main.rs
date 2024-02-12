@@ -124,6 +124,12 @@ pub fn dpu_main() -> Result<()> {
     info!("TCP listener created on {}.", address);
 
     debug!("dpu_runtime_manager::dpu_main accept succeeded. looping");
+    // We handle connections one at a time: once a connection is accepted,
+    // it is listened to till the end.
+    // Note that the runtime manager may synchronously handle several
+    // connections, for instance when receiving a message from A to be relayed
+    // to B: the message is sent to B while A is still waiting for a result
+    // TODO: multithread this
     loop {
         let (runtime_manager_socket, _) = listener.accept().map_err(|ioerr| {
             anyhow!(

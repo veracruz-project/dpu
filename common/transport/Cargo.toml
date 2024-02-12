@@ -13,6 +13,7 @@ initiator = [
     "veraison-apiclient"
 ]
 responder = [
+    "parsec-client",
     "parsec-se-driver",
 ]
 
@@ -33,4 +34,5 @@ jsonwebtoken = { version = "9", optional = true }
 veraison-apiclient = { git = "https://github.com/veraison/rust-apiclient", optional = true }
 
 # Responder
+parsec-client = { git = "https://github.com/parallaxsecond/parsec-client-rust", optional = true }
 parsec-se-driver = { git = "https://github.com/ionut-arm/parsec-se-driver", branch = "attested-tls", optional = true }

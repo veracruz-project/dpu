@@ -1,10 +1,12 @@
 //! TLS client
+//! Reimplementation of the Mbed TLS examples used in the attested TLS
+//! proof-of concept (https://github.com/CCC-Attestation/attested-tls-poc,
+//! Apache 2.0 license)
 
 use crate::tls;
 use anyhow::Result;
 use mbedtls::{ssl::{config::{Endpoint, Preset, Transport}, Config, Version}, rng, x509::Certificate};
-use mbedtls_sys::*;
-use mbedtls_sys::psa::*;
+use mbedtls_sys::{*, psa::*};
 use parsec_se_driver::PARSEC_SE_DRIVER;
 use std::borrow::Cow;
 use std::sync::Arc;

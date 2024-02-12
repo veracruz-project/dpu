@@ -48,34 +48,19 @@ impl DPURuntime {
     /// Note that there is no state machine specifying the order in which
     /// messages should be received.
     pub fn decode_dispatch(&self, session_id: SessionId) -> Result<()> {
-        let received_message = Session::receive_message(session_id)?;
-        let return_message = match received_message {
-            Request::Attestation(challenge, _challenge_id) => {
-                /*debug!("dpu_runtime::decode_dispatch Attestation");
-                let ret = self.attestation(&challenge)?;
-                trace!(
-                    "dpu_runtime::decode_dispatch Attestation complete with ret:{:?}\n",
-                    ret
-                );
-                ret*/
-                todo!()
-            },
-            Request::IndirectAttestation(attestation_server_url, attester_url) => {
-                debug!("dpu_runtime::decode_dispatch IndirectAttestation");
+        let received_msg = Session::receive_message(session_id)?;
+        let return_msg = match received_msg {
+            // TODO: pass `_attestation_server_url` to Mbed TLS callbacks
+            Request::Attest(_attestation_server_url, attester_url) => {
+                debug!("dpu_runtime::decode_dispatch Attest");
                 match Session::from_url(&attester_url) {
                     Err(e) => {
                         Response::Status(Status::Fail(
-                            format!("IndirectAttestation request failed: {}", e)
+                            format!("Attestation request failed: {}", e)
                         ))
                     },
-                    Ok(session_id) => {
-                        Response::Status(Status::Success(format!("Session {} established", session_id)))
-                        /*match attestation::request_attestation(session_id, &attestation_server_url) {
-                            Ok(_) => Response::Status(Status::Success(String::new())),
-                            Err(e) => Response::Status(Status::Fail(
-                                format!("IndirectAttestation request failed: {}", e)
-                            )),
-                        }*/
+                    Ok(final_session_id) => {
+                        Response::Status(Status::Success(format!("{}", final_session_id)))
                     },
                 }
             },
@@ -83,46 +68,55 @@ impl DPURuntime {
                 debug!("dpu_runtime::decode_dispatch Initialize");
                 Response::Status(Status::Success(String::new()))
             },
-            Request::UploadFile(filename, data) => {
+            Request::UploadFile(filename, data, final_session_id) => {
                 debug!("dpu_runtime::decode_dispatch UploadFile");
-                // TODO: Sanitize filename to prevent sender from bypassing the
-                // filesystem's sandbox
-                // TODO: Tear down session sysroot at end of session
-                let session_sysroot = DPURuntime::init_sysroot(session_id)?;
-                let mut path = session_sysroot.clone();
-                path.push(filename);
-                let mut file = File::create(&path)?;
-                file.write_all(&data)?;
-                Response::Status(Status::Success(String::new()))
+                match final_session_id {
+                    Some(session_id) => {
+                        // Upload file on behalf of initiator
+                        // TODO: multithread this
+                        let msg = Request::UploadFile(filename, data, None);
+                        Session::send_message(session_id, msg)?;
+                        Session::receive_message(session_id)?
+                    },
+                    None => {
+                        // TODO: Sanitize filename to prevent sender from bypassing the
+                        // filesystem's sandbox
+                        // TODO: Tear down session sysroot at end of session
+                        let session_sysroot = DPURuntime::init_sysroot(session_id)?;
+                        let mut path = session_sysroot.clone();
+                        path.push(filename);
+                        let mut file = File::create(&path)?;
+                        file.write_all(&data)?;
+                        Response::Status(Status::Success(String::new()))
+                    }
+                }
             },
-            Request::Execute(cmd) => {
-                // Execute shell command from the session's sysroot.
-                // Warning: This is insecure.
-                let session_sysroot = DPURuntime::init_sysroot(session_id)?;
-                debug!("dpu_runtime::decode_dispatch Execute");
-                debug!("Executing '{:?}'", cmd);
-                let output = Command::new("/usr/bin/sh")
-                    .args(["-c"])
-                    .args([cmd])
-                    .current_dir(session_sysroot)
-                    .output()?;
-                let output = format!("{:?}", output);
-                Response::Status(Status::Success(output))
+            Request::Execute(cmd, final_session_id) => {
+                match final_session_id {
+                    Some(session_id) => {
+                        // Execute remote command on behalf of initiator
+                        // TODO: multithread this
+                        let msg = Request::Execute(cmd, None);
+                        Session::send_message(session_id, msg)?;
+                        Session::receive_message(session_id)?
+                    },
+                    None => {
+                        // Execute shell command in session's sysroot.
+                        // Warning: This is very insecure!
+                        let session_sysroot = DPURuntime::init_sysroot(session_id)?;
+                        debug!("dpu_runtime::decode_dispatch Execute");
+                        debug!("Executing '{:?}'", cmd);
+                        let output = Command::new("/usr/bin/sh")
+                            .args(["-c"])
+                            .args([cmd])
+                            .current_dir(session_sysroot)
+                            .output()?;
+                        let output = format!("{:?}", output);
+                        Response::Status(Status::Success(output))
+                    }
+                }
             },
         };
-        Session::send_message(session_id, return_message)
+        Session::send_message(session_id, return_msg)
     }
 }
-
-/*
-pub trait PlatformRuntime {
-    fn attestation(&self, challenge: &Vec<u8>) -> Result<Response>;
-}
-
-impl PlatformRuntime for DPURuntime {
-    fn attestation(&self, challenge: &Vec<u8>) -> Result<Response> {
-        let rmm = crate::RUNTIME_MANAGER_MEASUREMENT.lock().unwrap();
-        attestation::generate_attestation_data(&rmm, challenge, &self.session_context.private_key())
-    }
-}
-*/

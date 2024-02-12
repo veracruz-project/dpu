@@ -38,6 +38,7 @@ where
 
 /// Reads a buffer of data from a file descriptor `fd` by first reading a length
 /// of data, followed by the data proper.
+/// Note that receiving a FIN packet results in an empty hence invalid buffer
 pub fn receive_buffer<T>(fd: &mut T) -> Result<Vec<u8>>
 where
     T: std::io::Read,
