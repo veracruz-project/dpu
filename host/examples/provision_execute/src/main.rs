@@ -2,12 +2,9 @@
 
 use anyhow::anyhow;
 use log::{error, info};
-use utils::attestation;
 use transport::{messages::{Request, Response, Status}, session::Session};
 
-
 const DPU_SERVER_URL: &str = "127.0.0.1:6666";
-const ATTESTATION_SERVER_URL: &str = "127.0.0.1:3010";
 
 fn main() -> anyhow::Result<()> {
     env_logger::init();
@@ -15,20 +12,16 @@ fn main() -> anyhow::Result<()> {
     // TODO: Parse arguments with clap
 
     let dpu_server_url = DPU_SERVER_URL;
-    let proxy_attestation_server_url = ATTESTATION_SERVER_URL;
 
+    info!("Establishing attested connection with DPU...");
     let dpu_session_id = Session::from_url(dpu_server_url)?;
-
-    info!("Attesting DPU...");
-    attestation::request_attestation(dpu_session_id, proxy_attestation_server_url)?;
-    info!("Successfully attested DPU.");
 
     info!("Preparing provisions...");
     let filename = "foo.txt".to_owned();
     let data = b"bar".to_vec();
 
     info!("Provisioning DPU...");
-    Session::send_message(dpu_session_id, &Request::UploadFile(filename, data))
+    Session::send_message(dpu_session_id, &Request::UploadFile(filename, data, None))
         .map_err(|e| {
             error!("Failed to send provisioning message to DPU.  Error returned: {:?}.", e);
             e
@@ -48,7 +41,7 @@ fn main() -> anyhow::Result<()> {
     }
 
     info!("Requesting remote execution...");
-    Session::send_message(dpu_session_id, &Request::Execute("cat foo.txt".to_owned()))
+    Session::send_message(dpu_session_id, &Request::Execute("cat foo.txt".to_owned(), None))
         .map_err(|e| {
             error!("Failed to send execution message to DPU.  Error returned: {:?}.", e);
             e

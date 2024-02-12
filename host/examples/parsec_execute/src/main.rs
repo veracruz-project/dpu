@@ -2,7 +2,6 @@
 
 use anyhow::anyhow;
 use log::{error, info};
-use utils::attestation;
 use transport::{messages::{Request, Response, Status}, session::Session};
 
 use std::fs;
@@ -10,8 +9,6 @@ use std::fs::File;
 use std::io::Read;
 
 const DPU_SERVER_URL: &str = "127.0.0.1:6666";
-const ATTESTATION_SERVER_URL: &str = "127.0.0.1:3010";
-
 const PARSEC_APP_NAME: &str = "/tmp/dpu/parsec_app";
 const PARSEC_PERM_CMD: &str = "chmod +x /tmp/dpu/parsec_app";
 const PARSEC_EXECUTE_CMD: &str = "PARSEC_SERVICE_CONN_TYPE=tcp PARSEC_SERVICE_CONN_IP_ADDR=172.28.97.222  PARSEC_SERVICE_CONN_PORT_NO=8002 /tmp/dpu/parsec_app ping";
@@ -32,19 +29,16 @@ fn main() -> anyhow::Result<()> {
 
     // TODO: Parse arguments with clap
     let dpu_server_url = DPU_SERVER_URL;
-    let proxy_attestation_server_url = ATTESTATION_SERVER_URL;
 
+    info!("Establishing attested connection with DPU...");
     let dpu_session_id = Session::from_url(dpu_server_url)?;
-
-    attestation::request_attestation(dpu_session_id, proxy_attestation_server_url)?;
-    info!("Successfully attested DPU.");
 
     info!("Preparing parsec-tool executable data...");
     let filename = PARSEC_APP_NAME.to_owned();
     let data = get_file_data(&filename).unwrap();
 
     info!("Provisioning parsec-tool to DPU...");
-    Session::send_message(dpu_session_id, &Request::UploadFile(filename, data))
+    Session::send_message(dpu_session_id, &Request::UploadFile(filename, data, None))
         .map_err(|e| {
             error!("Failed to send provisioning message to DPU.  Error returned: {:?}.", e);
             e
@@ -64,7 +58,7 @@ fn main() -> anyhow::Result<()> {
     }
 
     info!("Requesting permission change...");
-    Session::send_message(dpu_session_id, &Request::Execute(PARSEC_PERM_CMD.to_owned()))
+    Session::send_message(dpu_session_id, &Request::Execute(PARSEC_PERM_CMD.to_owned(), None))
         .map_err(|e| {
             error!("Failed to send execution message to DPU.  Error returned: {:?}.", e);
             e
@@ -84,7 +78,7 @@ fn main() -> anyhow::Result<()> {
     }
 
     info!("Requesting parsec-tool execution..");
-    Session::send_message(dpu_session_id, &Request::Execute(PARSEC_EXECUTE_CMD.to_owned()))
+    Session::send_message(dpu_session_id, &Request::Execute(PARSEC_EXECUTE_CMD.to_owned(), None))
         .map_err(|e| {
             error!("Failed to send execution message to DPU.  Error returned: {:?}.", e);
             e

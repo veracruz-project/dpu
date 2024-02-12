@@ -9,5 +9,4 @@ edition = "2018"
 anyhow = "1.0.14"
 env_logger = { version = "0.10.0" }
 log = "0.4.13"
-transport = { path = "../../../common/transport" }
-utils = { path = "../../../common/utils" }
+transport = { path = "../../../common/transport", features = ["initiator"] }
