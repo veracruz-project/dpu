@@ -1,3 +1,0 @@
-[submodule "common/rust-mbedtls"]
-	path = common/rust-mbedtls
-	url = https://github.com/veracruz-project/rust-mbedtls
