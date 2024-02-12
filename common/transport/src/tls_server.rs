@@ -8,6 +8,7 @@ use anyhow::Result;
 use ear::{Ear, TrustTier};
 use jsonwebtoken as jwt;
 use lazy_static::lazy_static;
+use log::{log_enabled, Level};
 use mbedtls::{pk, rng, ssl::{config::{AuthMode, Endpoint, Preset, Transport}, Config, Version}, x509::Certificate};
 use mbedtls_sys::*;
 use mbedtls_sys::types::raw_types::{c_int, c_void};
@@ -256,7 +257,8 @@ pub fn generate_tls_server_config() -> Result<Config> {
         print!("{} {}:{} {}", level, file, line, message);
     };
     config.set_dbg_callback(dbg_callback);
-    unsafe { mbedtls::set_global_debug_threshold(5); }
+    let mbedtls_debug_lvl = if log_enabled!(Level::Trace) { 4 } else { 0 };
+    unsafe { mbedtls::set_global_debug_threshold(mbedtls_debug_lvl); }
 
     config.set_authmode(AuthMode::Required);
     unsafe {

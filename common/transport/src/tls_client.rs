@@ -5,6 +5,7 @@
 
 use crate::tls;
 use anyhow::Result;
+use log::{log_enabled, Level};
 use mbedtls::{ssl::{config::{Endpoint, Preset, Transport}, Config, Version}, rng, x509::Certificate};
 use mbedtls_sys::{*, psa::*};
 use parsec_se_driver::PARSEC_SE_DRIVER;
@@ -41,7 +42,8 @@ pub fn generate_tls_client_config() -> Result<(Config, Box<key_handle_t>, Box<[u
         print!("{} {}:{} {}", level, file, line, message);
     };
     config.set_dbg_callback(dbg_callback);
-    unsafe { mbedtls::set_global_debug_threshold(5); }
+    let mbedtls_debug_lvl = if log_enabled!(Level::Trace) { 4 } else { 0 };
+    unsafe { mbedtls::set_global_debug_threshold(mbedtls_debug_lvl); }
 
     // `key_handle` and `client_attestation_type_list` must:
     //  1) be allocated on the heap, so that they may be accessed by Mbed TLS
