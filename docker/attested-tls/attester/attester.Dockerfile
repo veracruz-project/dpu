@@ -1,47 +1,4 @@
-from ${DOCKER_ARCH}golang:1.19 AS go_builder
-
-RUN apt-get update && \
-    apt-get install -y wget curl vim git && \
-    apt-get clean
-
-RUN set -eux; \
-    echo "iteration 0"; \
-    git clone https://github.com/veracruz-project/proxy_attestation_server.git --branch main --tags ; \
-    cd proxy_attestation_server; \
-    git checkout v0.2.1; \
-    go build -o ./vts/vts -ldflags "-X 'github.com/veraison/services/config.SchemeLoader=builtin'" github.com/veraison/services/vts/cmd/vts-service; \
-    go build -o ./provisioning/provisioning -ldflags "-X 'github.com/veraison/services/config.SchemeLoader=builtin'" github.com/veraison/services/provisioning/cmd/provisioning-service; \
-    go build .; \
-    ls
-
-from ${DOCKER_ARCH}golang:1.19 AS corim_builder
-
-RUN set -eux; \
-    go install github.com/veraison/corim/cocli@latest
-
-COPY MyComidPsaIak.json /go/
-COPY corimMini.json /go/
-RUN pwd
-RUN cocli comid create --template MyComidPsaIak.json
-RUN cocli corim create -m MyComidPsaIak.cbor -t corimMini.json -o psa_corim.cbor
-RUN mkdir /opt/veraison/; \
-    mkdir /opt/veraison/vts; \
-    mkdir /opt/veraison/vts/plugins; \
-    mkdir /opt/veraison/provisioning; \
-    mkdir /opt/veraison/provisioning/plugins; \
-    mkdir ~/example/
-
-COPY --from=go_builder /go/proxy_attestation_server/vts /opt/veraison/vts/
-COPY --from=go_builder /go/proxy_attestation_server/provisioning /opt/veraison/provisioning/
-COPY --from=go_builder /go/proxy_attestation_server/proxy_attestation_server /opt/veraison/
-#COPY --from=corim_builder /go/psa_corim.cbor /opt/veraison/
-
-COPY vts_config.yaml /opt/veraison/vts/config.yaml
-COPY --from=go_builder /go/proxy_attestation_server/vts/skey.jwk /opt/veraison/vts/
-COPY provisioning_config.yaml /opt/veraison/provisioning/config.yaml
-
-
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 ARG TARGETARCH
 ENV PKG_CONFIG_PATH /usr/local/lib/pkgconfig
@@ -55,7 +12,7 @@ RUN apt install -y libini-config-dev libcurl4-openssl-dev curl libgcc1
 RUN apt install -y python3-distutils libclang-12-dev protobuf-compiler python3-pip 
 RUN apt install -y openssl
 RUN pip3 install Jinja2
-RUN apt-get -y install tzdata
+RUN apt-get -y install tzdata sudo
 
 WORKDIR /tmp
 
@@ -70,7 +27,7 @@ RUN cd tpm2-tss \
 RUN rm -rf tpm2-tss
 
 # Download and install TPM 2.0 Tools verison 4.1.1
-RUN git clone https://github.com/tpm2-software/tpm2-tools.git --branch 4.1.1
+RUN git clone https://github.com/tpm2-software/tpm2-tools.git --branch 5.4
 RUN cd tpm2-tools \
 	&& ./bootstrap \
 	&& ./configure --prefix=/usr \
@@ -79,9 +36,8 @@ RUN cd tpm2-tools \
 RUN rm -rf tpm2-tools
 
 # Download and install software TPM
-ARG ibmtpm_name=ibmtpm1637
+ARG ibmtpm_name=ibmtpm1682
 RUN wget -L "https://downloads.sourceforge.net/project/ibmswtpm2/$ibmtpm_name.tar.gz"
-RUN sha256sum $ibmtpm_name.tar.gz | grep ^dd3a4c3f7724243bc9ebcd5c39bbf87b82c696d1c1241cb8e5883534f6e2e327
 RUN mkdir -p $ibmtpm_name \
 	&& tar -xvf $ibmtpm_name.tar.gz -C $ibmtpm_name \
 	&& chown -R root:root $ibmtpm_name \
@@ -95,8 +51,25 @@ RUN rm -rf $ibmtpm_name/src $ibmtpm_name
 WORKDIR /tmp
 
 # Install Rust toolchain
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ENV PATH="/root/.cargo/bin:/opt/rust/bin:${PATH}"
+ENV RUSTUP_HOME=/usr/local/rustup \
+     CARGO_HOME=/usr/local/cargo \
+     PATH=/usr/local/cargo/bin:$PATH \
+     RUST_VERSION=1.70.0
+
+RUN set -eux; \
+     dpkgArch="$(dpkg --print-architecture)"; \
+     case "${dpkgArch##*-}" in \
+         amd64) rustArch='x86_64-unknown-linux-gnu'; rustupSha256='3dc5ef50861ee18657f9db2eeb7392f9c2a6c95c90ab41e45ab4ca71476b4338' ;; \
+         arm64) rustArch='aarch64-unknown-linux-gnu'; rustupSha256='32a1532f7cef072a667bac53f1a5542c99666c4071af0c9549795bbdb2069ec1' ;; \
+         *) echo >&2 "unsupported architecture: ${dpkgArch}"; exit 1 ;; \
+     esac; \
+     url="https://static.rust-lang.org/rustup/archive/1.24.3/${rustArch}/rustup-init"; \
+     wget "$url"; \
+     echo "${rustupSha256} *rustup-init" | sha256sum -c -; \
+     chmod +x rustup-init; \
+     ./rustup-init -y --no-modify-path --profile minimal --default-toolchain $RUST_VERSION --default-host ${rustArch}; \
+     rm rustup-init; \
+     rm -rf /usr/local/cargo/registry/*/github.com-* 
 
 # Install Parsec service
 RUN git clone -b attested-tls https://github.com/ionut-arm/parsec.git \
@@ -106,9 +79,6 @@ RUN git clone -b attested-tls https://github.com/ionut-arm/parsec.git \
 	&& cp ./target/release/parsec /usr/bin/
 RUN mkdir /etc/parsec/
 COPY parsec-config.toml /etc/parsec/config.toml
-
-# At runtime, Parsec is configured with the socket in /tmp/
-ENV PARSEC_SERVICE_ENDPOINT="unix:/tmp/parsec.sock"
 
 # Install MbedTLS (used for building purposes)
 RUN git clone https://github.com/ARMmbed/mbedtls.git
@@ -150,16 +120,6 @@ RUN cd ctoken \
 	&& install -m 644  inc/ctoken/ctoken* /usr/local/include/ctoken \
 	&& install -m 644 libctoken.a /usr/local/lib
 
-# Build attester MbedTLS
-RUN cd mbedtls \
-	&& make clean \
-	&& git reset --hard HEAD \
-	&& git remote add ionut https://github.com/ionut-arm/mbedtls.git \
-	&& git fetch ionut parsec-attestation  \
-	&& git checkout f4ac7593826a506fc509c83cad73786acab1d442 \
-	&& make CFLAGS="-DCTOKEN_LABEL_CNF=8 -DCTOKEN_TEMP_LABEL_KAK_PUB=2500" LDFLAGS="-lctoken -lt_cose -lqcbor -lm -lparsec_se_driver -lpthread -ldl" \
-	&& install -m 755 programs/ssl/ssl_client2 /usr/local/bin
-
 # Install Parsec tool
 RUN git clone -b attested-tls https://github.com/ionut-arm/parsec-tool.git \
 	&& cd parsec-tool \
@@ -171,21 +131,47 @@ RUN git clone -b attested-tls https://github.com/ionut-arm/parsec-tool.git \
 RUN wget -c https://go.dev/dl/go1.20.4.linux-arm64.tar.gz -O - | tar -xz -C /usr/local
 ENV PATH $PATH:/usr/local/go/bin:/root/go/bin
 
+
 # Install cocli
 RUN go install github.com/veraison/corim/cocli@rc0-v2.0.0
 
+WORKDIR /root/
+ARG USER=mohnoo01
+
+RUN mkdir -p ~/src ; \
+    git clone https://github.com/parallaxsecond/parsec-tool.git ~/src/parsec-tool; \
+    cd  ~/src/parsec-tool; \
+    git apply /1000-use-local-parsec-client.patch; \
+    rustup install stable; \
+    rustup default stable; \
+    cd ~/src/parsec-tool; \
+    cargo build; \
+    mkdir -p /tmp/dpu; \
+    cp ~/src/parsec-tool/target/debug/parsec-tool /tmp/dpu/parsec_app; \
+    rm -r ~/src/parsec-tool;
+
+ARG UID=0
+ENV CARGO_HOME="/home/$USER/.cargo" 
+ENV PATH $PATH:/usr/local/go/bin:/root/go/bin
+# At runtime, Parsec is configured with the socket in /tmp/
+ENV PARSEC_SERVICE_ENDPOINT="unix:/tmp/parsec.sock"
+
+RUN \
+    mkdir -p /work; \
+    if [ "$USER" != "root" ] ; then \
+         useradd -rm -d /home/$USER -s /bin/bash -g root -G sudo -u 1001 $USER ;\
+         echo "$USER ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/$USER && chmod 0440 /etc/sudoers.d/$USER ; \
+    fi
+
+USER $USER
+
 # Introduce scripts
-COPY endorse.sh /root/
-COPY handshake.sh /root/
-COPY start.sh /root/
+COPY endorse.sh /home/$USER
+COPY start.sh /home/$USER
 
 # Introduced platform endorsement templates
-COPY comid-pcr.json /root/
-COPY corim.json /root/
+COPY comid-pcr.json /home/$USER
+COPY corim.json /home/$USER
+WORKDIR /home/$USER
 
-WORKDIR /root/
-
-CMD /root/start.sh
-
-
-
+CMD sudo /home/$USER/start.sh
