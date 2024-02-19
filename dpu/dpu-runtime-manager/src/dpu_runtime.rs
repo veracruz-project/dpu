@@ -10,7 +10,7 @@
 //! information on licensing and copyright.
 
 use anyhow::Result;
-use log::debug;
+use log::{debug, error};
 use std::{fs::{File, create_dir_all}, io::Write, path::PathBuf, process::Command};
 use transport::{messages::{Request, Response, Status}, session::{Session, SessionId}};
 
@@ -55,12 +55,14 @@ impl DPURuntime {
                 debug!("dpu_runtime::decode_dispatch Attest");
                 match Session::from_url(&attester_url) {
                     Err(e) => {
-                        Response::Status(Status::Fail(
-                            format!("Attestation request failed: {}", e)
-                        ))
+                        let s = format!("Attestation request failed: {}", e);
+                        error!("{}", s);
+                        Response::Status(Status::Fail(s))
                     },
                     Ok(final_session_id) => {
-                        Response::Status(Status::Success(format!("{}", final_session_id)))
+                        let s = format!("{}", final_session_id);
+                        debug!("Final session ID: {}", s);
+                        Response::Status(Status::Success(s))
                     },
                 }
             },
@@ -92,6 +94,7 @@ impl DPURuntime {
                 }
             },
             Request::Execute(cmd, final_session_id) => {
+                debug!("dpu_runtime::decode_dispatch Execute");
                 match final_session_id {
                     Some(session_id) => {
                         // Execute remote command on behalf of initiator
@@ -104,7 +107,6 @@ impl DPURuntime {
                         // Execute shell command in session's sysroot.
                         // Warning: This is very insecure!
                         let session_sysroot = DPURuntime::init_sysroot(session_id)?;
-                        debug!("dpu_runtime::decode_dispatch Execute");
                         debug!("Executing '{:?}'", cmd);
                         let output = Command::new("/usr/bin/sh")
                             .args(["-c"])

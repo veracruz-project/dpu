@@ -2,7 +2,7 @@
 
 use anyhow::anyhow;
 use log::{error, info};
-use transport::{messages::{Request, Response, Status}, session::Session};
+use transport::{messages::{Request, Response, Status}, session::{Session, SessionId}};
 
 
 const DPU1_SERVER_URL: &str = "127.0.0.1:6666";
@@ -36,13 +36,43 @@ fn main() -> anyhow::Result<()> {
         error!("Failed to receive response to attestation message.  Error received: {:?}.", e);
         e
     })?;
-    match response {
-        Response::Status(Status::Success(_)) => {
-            info!("Successfully attested DPU2.");
+    let dpu2_session_id = match response {
+        Response::Status(Status::Success(m)) => {
+            info!("Successfully attested DPU2: DPU2 session ID = {}", m);
+            m.parse::<SessionId>()?
+        },
+        Response::Status(Status::Fail(e)) => {
+            error!("Error attesting DPU2: {}", e);
+            return Err(anyhow!("Indirect attestation failure."));
         },
         _ => {
-            error!("Error attesting DPU2.");
+            error!("Error attesting DPU2: Other");
             return Err(anyhow!("Indirect attestation failure."));
+        },
+    };
+
+    // Now we can send mesasages to DPU2 using `dpu2_session_id`
+    info!("Requesting remote execution...");
+    Session::send_message(dpu1_session_id, &Request::Execute("ls -al".to_owned(), Some(dpu2_session_id)))
+        .map_err(|e| {
+            error!("Failed to send execution message to DPU2.  Error returned: {:?}.", e);
+            e
+        })?;
+    let response = Session::receive_message(dpu1_session_id).map_err(|e| {
+        error!("Failed to receive response to execution message.  Error received: {:?}.", e);
+        e
+    })?;
+    match response {
+        Response::Status(Status::Success(output)) => {
+            info!("Successfully executed code remotely. Output: \n{}", output);
+        },
+        Response::Status(Status::Fail(e)) => {
+            error!("Error executing code remotely: {}", e);
+            return Err(anyhow!("Remote execution failure."));
+        },
+        _ => {
+            error!("Error executing code remotely: Other");
+            return Err(anyhow!("Remote execution failure."));
         },
     }
 

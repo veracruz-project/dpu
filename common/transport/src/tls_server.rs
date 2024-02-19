@@ -8,7 +8,7 @@ use anyhow::Result;
 use ear::{Ear, TrustTier};
 use jsonwebtoken as jwt;
 use lazy_static::lazy_static;
-use log::{log_enabled, Level};
+use log::{debug, error, info, log_enabled, Level};
 use mbedtls::{pk, rng, ssl::{config::{AuthMode, Endpoint, Preset, Transport}, Config, Version}, x509::Certificate};
 use mbedtls_sys::*;
 use mbedtls_sys::types::raw_types::{c_int, c_void};
@@ -44,7 +44,7 @@ unsafe extern "C" fn my_nonce(
     nonce: *mut u8,
     nonce_size: *mut usize,
 ) -> c_int {
-    println!("Attestation nonce requested");
+    debug!("Attestation nonce requested");
     let veraison_endpoint = &*VERAISON_ENDPOINT
         .lock()
         .unwrap();
@@ -72,7 +72,7 @@ unsafe extern "C" fn my_nonce(
     match challenge_response {
         Ok(_) => {},
         Err(ref e) => {
-            println!("Error creating a ChallengeResponse object: {}", e);
+            error!("Error creating a ChallengeResponse object: {}", e);
             return -1
         }
     }
@@ -85,7 +85,7 @@ unsafe extern "C" fn my_nonce(
     match new_session {
         Ok(_) => {},
         Err(ref e) => {
-            println!("Failed to establish session with Veraison service at {} ({})", veraison_endpoint, e);
+            error!("Failed to establish session with Veraison service at {} ({})", veraison_endpoint, e);
             return -1
         }
     }
@@ -117,7 +117,7 @@ unsafe extern "C" fn my_verify(
     ik_pub: *mut u8,
     ik_pub_len: *mut usize,
 ) -> c_int {
-    println!("Verification of KAT-Bundle requested");
+    debug!("Verification of KAT-Bundle requested");
 
     // Get Veraison challenge/response session
     let veraison_challenge_response_lock = VERAISON_CHALLENGE_RESPONSE
@@ -125,7 +125,7 @@ unsafe extern "C" fn my_verify(
         .unwrap();
     let veraison_challenge_response = match &*veraison_challenge_response_lock {
         None => {
-            println!("ERROR: Need to call Veraison service, but no session has been set up.");
+            error!("ERROR: Need to call Veraison service, but no session has been set up.");
             return -1
         },
         Some(r) => r,
@@ -154,21 +154,21 @@ unsafe extern "C" fn my_verify(
     match vresult {
         Ok(_) => {},
         Err(ref e) => {
-            println!("Veraison verification attempt failed ({})", e);
+            error!("Veraison verification attempt failed ({})", e);
             destroy_veraison_session();
             return -1
         },
     }
     let attestation_result = vresult.unwrap();
-    println!("Veraison attestation result: {}", attestation_result);
+    debug!("Veraison attestation result: {}", attestation_result);
 
-    println!("Public key dump for verification:\n{:?}", verification_api.ear_verification_key_as_pem());
+    debug!("Public key dump for verification:\n{:?}", verification_api.ear_verification_key_as_pem());
 
-    println!("Public key algorithm: {:?}", verification_api.ear_verification_algorithm());
+    debug!("Public key algorithm: {:?}", verification_api.ear_verification_algorithm());
 
     // XXX: ES256 is the only algorithm implemented by both rust-ear (https://github.com/veraison/rust-ear/blob/main/src/algorithm.rs) and jsonwebkey (https://github.com/veraison/rust-apiclient/blob/e34784dbf2188d6bcc1a01fe70e225d5464844f3/rust-client/src/lib.rs#L349)
     if verification_api.ear_verification_algorithm() != "ES256" {
-        println!("EAR is using an unsupported signature algorithm");
+        error!("EAR is using an unsupported signature algorithm");
         return -1;
     }
     let ear = Ear::from_jwt(
@@ -183,7 +183,7 @@ unsafe extern "C" fn my_verify(
     );
     let ear = match ear {
         Err(e) => {
-            println!("Unable to process attestation result ({})", e);
+            error!("Unable to process attestation result ({})", e);
             destroy_veraison_session();
             return -1
         },
@@ -192,18 +192,18 @@ unsafe extern "C" fn my_verify(
 
     // Get the list of appraisal records - we expect only a single entry.
     let (submodule, appraisal) = if ear.submods.len() > 1 {
-        println!("Unexpected number of appraisal records. Expected 1, obtained {}", ear.submods.len());
+        error!("Unexpected number of appraisal records. Expected 1, obtained {}", ear.submods.len());
         destroy_veraison_session();
         return -1;
     } else {
         ear.submods.first_key_value().unwrap()
     };
 
-    println!("{} Status tier: {:?}", submodule, appraisal.status);
+    info!("{} Status tier: {:?}", submodule, appraisal.status);
 
     // Fail if we don't have affirming status.
     if appraisal.status != TrustTier::Affirming {
-        println!("ATTESTATION VERIFICATION FAILED: Non-affirming tier status.");
+        error!("ATTESTATION VERIFICATION FAILED: Non-affirming tier status.");
         destroy_veraison_session();
         return -1;
     }
@@ -211,7 +211,7 @@ unsafe extern "C" fn my_verify(
     // Get the AK pub from the parsed claims.
     let key = match &appraisal.key_attestation {
         None => {
-            println!("Appraisal for {} contains no public key", submodule);
+            error!("Appraisal for {} contains no public key", submodule);
             destroy_veraison_session();
             return -1;
         },

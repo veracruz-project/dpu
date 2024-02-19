@@ -5,9 +5,10 @@
 
 use crate::tls;
 use anyhow::Result;
-use log::{log_enabled, Level};
+use log::{info, log_enabled, Level};
 use mbedtls::{ssl::{config::{Endpoint, Preset, Transport}, Config, Version}, rng, x509::Certificate};
 use mbedtls_sys::{*, psa::*};
+use parsec_client::core::interface::operations::psa_key_attributes::psa_crypto_sys::PSA_ERROR_ALREADY_EXISTS;
 use parsec_se_driver::PARSEC_SE_DRIVER;
 use std::borrow::Cow;
 use std::sync::Arc;
@@ -20,7 +21,10 @@ pub fn generate_tls_client_config() -> Result<(Config, Box<key_handle_t>, Box<[u
     unsafe {
         ret = register_se_driver(location, parsec_se_driver);
     }
-    if ret != 0 {
+    if ret == PSA_ERROR_ALREADY_EXISTS {
+        info!("Couldn't register SE driver as it already exists. Ignoring");
+    }
+    else if ret != 0 {
         panic!("Register failed (status = {})\n", ret);
     }
 
