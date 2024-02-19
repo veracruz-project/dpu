@@ -1,0 +1,537 @@
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	gin	[GIN] 2024/02/07 - 16:15:08 | 200 |  366.418525ms |     172.30.0.13 | POST     "/endorsement-provisioning/v1/submit"
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	gin	[GIN] 2024/02/09 - 17:01:16 | 200 |  530.055109ms |     172.30.0.13 | POST     "/endorsement-provisioning/v1/submit"
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	gin	[GIN] 2024/02/13 - 17:24:58 | 200 |  561.918136ms |     172.30.0.13 | POST     "/endorsement-provisioning/v1/submit"
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	gin	[GIN] 2024/02/15 - 01:24:00 | 200 |  321.131896ms |     172.30.0.13 | POST     "/endorsement-provisioning/v1/submit"
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	gin	[GIN] 2024/02/15 - 01:41:14 | 200 |  344.385412ms |     172.30.0.13 | POST     "/endorsement-provisioning/v1/submit"
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	gin	[GIN] 2024/02/15 - 15:32:53 | 200 |  311.637545ms |     172.30.0.13 | POST     "/endorsement-provisioning/v1/submit"
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
+INFO	Initializing Provisioning Service	{"version": "commit-8e55820"}
+INFO	initializing VTS client
+INFO	vts connection established	{"server-version": "commit-8e55820"}
+INFO	initializing provisioner
+INFO	initializing provisioning API service	{"address": "0.0.0.0:8888"}
+INFO	gin	[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+INFO	gin	 - using env:	export GIN_MODE=release
+INFO	gin	 - using code:	gin.SetMode(gin.ReleaseMode)
+INFO	gin	
+INFO	gin	
+INFO	gin	[GIN-debug] POST   /endorsement-provisioning/v1/submit --> github.com/veraison/services/provisioning/api.IHandler.Submit-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] GET    /.well-known/veraison/provisioning --> github.com/veraison/services/provisioning/api.IHandler.GetWellKnownProvisioningInfo-fm (4 handlers)
+INFO	gin	
+INFO	gin	[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+INFO	gin	Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+INFO	gin	
+INFO	gin	[GIN-debug] Listening and serving HTTP on 0.0.0.0:8888
+INFO	gin	
+INFO	terminatedreceived, exiting
+INFO	bye!
