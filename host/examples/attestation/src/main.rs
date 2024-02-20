@@ -23,7 +23,7 @@ fn main() -> anyhow::Result<()> {
     let dpu1_session_id = Session::from_url(dpu1_server_url)?;
 
     info!("Indirectly attesting DPU2 via DPU1...");
-    Session::send_message(
+    Session::send_message_plaintext(
         dpu1_session_id,
         &Request::Attest(
             proxy_attestation_server_url.to_owned(),
@@ -32,7 +32,7 @@ fn main() -> anyhow::Result<()> {
         error!("Failed to send attestation message to DPU1.  Error returned: {:?}.", e);
         e
     })?;
-    let response = Session::receive_message(dpu1_session_id).map_err(|e| {
+    let response = Session::receive_message_plaintext(dpu1_session_id).map_err(|e| {
         error!("Failed to receive response to attestation message.  Error received: {:?}.", e);
         e
     })?;
@@ -53,12 +53,12 @@ fn main() -> anyhow::Result<()> {
 
     // Now we can send mesasages to DPU2 using `dpu2_session_id`
     info!("Requesting remote execution...");
-    Session::send_message(dpu1_session_id, &Request::Execute("ls -al".to_owned(), Some(dpu2_session_id)))
+    Session::send_message_plaintext(dpu1_session_id, &Request::Execute("ls -al".to_owned(), Some(dpu2_session_id)))
         .map_err(|e| {
             error!("Failed to send execution message to DPU2.  Error returned: {:?}.", e);
             e
         })?;
-    let response = Session::receive_message(dpu1_session_id).map_err(|e| {
+    let response = Session::receive_message_plaintext(dpu1_session_id).map_err(|e| {
         error!("Failed to receive response to execution message.  Error received: {:?}.", e);
         e
     })?;

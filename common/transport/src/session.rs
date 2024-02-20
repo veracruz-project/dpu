@@ -1,5 +1,6 @@
 //! Manage transport session.
 
+use crate::tcp;
 use crate::tls;
 #[cfg(feature = "initiator")]
 use crate::tls_server;
@@ -154,5 +155,44 @@ impl Session {
             .get_mut(&session_id)
             .ok_or(anyhow!("Session does not exist"))?;
         tls::receive_message(&mut s.tls_context)
+    }
+
+    /// Send plaintext (TCP-only) application message
+    pub fn send_message_plaintext<T>(session_id: SessionId, data: T) -> Result<()>
+    where
+    T: Serialize + Debug,
+    {
+        let mut s = SESSIONS
+            .lock()
+            .map_err(|_| anyhow!("Could not lock session table"))?;
+        let s = s
+            .get_mut(&session_id)
+            .ok_or(anyhow!("Session does not exist"))?;
+        tcp::send_message(
+            s
+                .tls_context
+                .io_mut()
+                .ok_or(anyhow!("Context has no valid I/O"))?,
+            data
+        )
+    }
+
+    /// Receive plaintext (TCP-only) application message
+    pub fn receive_message_plaintext<T>(session_id: SessionId) -> Result<T>
+    where
+    T: DeserializeOwned + Debug,
+    {
+        let mut s = SESSIONS
+            .lock()
+            .map_err(|_| anyhow!("Could not lock session table"))?;
+        let s = s
+            .get_mut(&session_id)
+            .ok_or(anyhow!("Session does not exist"))?;
+        tcp::receive_message(
+            s
+                .tls_context
+                .io_mut()
+                .ok_or(anyhow!("Context has no valid I/O"))?
+        )
     }
 }

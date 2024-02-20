@@ -18,23 +18,18 @@ use transport::{messages::{Request, Response, Status}, session::{Session, Sessio
 /// Warning: This is insecure and should be better sandboxed.
 const FILESYSTEM_ROOT: &'static str = "/tmp/dpu_rm";
 
-pub struct SessionContext {
-}
-
-impl SessionContext {
-    fn new() -> Result<Self> {
-        Ok(Self {})
-    }
+pub enum EncryptionMode {
+    Tls,
+    Plaintext
 }
 
 pub struct DPURuntime {
-    pub session_context: SessionContext,
+    pub encryption_mode: EncryptionMode,
 }
 
 impl DPURuntime {
-    pub fn new() -> Result<Self> {
-        let session_context = SessionContext::new()?;
-        Ok(DPURuntime { session_context })
+    pub fn new(encryption_mode: EncryptionMode) -> Result<Self> {
+        Ok(DPURuntime { encryption_mode })
     }
 
     pub fn init_sysroot(session_id: SessionId) -> Result<PathBuf> {
@@ -48,7 +43,10 @@ impl DPURuntime {
     /// Note that there is no state machine specifying the order in which
     /// messages should be received.
     pub fn decode_dispatch(&self, session_id: SessionId) -> Result<()> {
-        let received_msg = Session::receive_message(session_id)?;
+        let received_msg = match self.encryption_mode {
+            EncryptionMode::Tls => Session::receive_message(session_id)?,
+            EncryptionMode::Plaintext => Session::receive_message_plaintext(session_id)?,
+        };
         let return_msg = match received_msg {
             // TODO: pass `_attestation_server_url` to Mbed TLS callbacks
             Request::Attest(_attestation_server_url, attester_url) => {
@@ -119,6 +117,9 @@ impl DPURuntime {
                 }
             },
         };
-        Session::send_message(session_id, return_msg)
+        match self.encryption_mode {
+            EncryptionMode::Tls => Session::send_message(session_id, return_msg),
+            EncryptionMode::Plaintext => Session::send_message_plaintext(session_id, return_msg),
+        }
     }
 }
