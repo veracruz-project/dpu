@@ -10,7 +10,7 @@
 //! information on licensing and copyright.
 
 use serde::{Deserialize, Serialize};
-use crate::session::SessionId;
+use crate::session::{EncryptionMode, SessionId};
 
 ///////////////////////////////////////////////////////////////////////////////
 // Status messages.
@@ -69,6 +69,11 @@ pub enum Request {
     /// String       - The policy, in JSON format
     /// Vec<Vec<u8>> - The certificate chain for the enclave
     Initialize(String, Vec<u8>),
+
+    /// Change session's encryption mode
+    /// Parameters:
+    /// EncryptionMode - Encryption mode
+    SetEncryptionMode(EncryptionMode),
 
     /// Send file to the responder.
     /// Parameters:

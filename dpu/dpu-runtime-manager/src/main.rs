@@ -31,7 +31,6 @@ lazy_static! {
 /// Default values for use by the DPU.
 const DEFAULT_LISTENING_ADDRESS: &str = "127.0.0.1";
 const DEFAULT_LISTENING_PORT: &str = "6666";
-const DEFAULT_ENCRYPTION_MODE: &str = "tls";
 
 ////////////////////////////////////////////////////////////////////////////////
 // Entry point and message dispatcher.
@@ -81,15 +80,6 @@ pub fn dpu_main() -> Result<()> {
                 .help("SHA256 measurement of the Runtime Manager enclave binary.")
                 .value_name("MEASUREMENT"),
         )
-        .arg(
-            Arg::new("encryption_mode")
-                .short('e')
-                .long("encryption-mode")
-                .num_args(1)
-                .required(false)
-                .help("Encryption mode.")
-                .value_name("ENCRYPTION_MODE"),
-        )
         .get_matches();
 
     let listening_address = match matches.get_one::<String>("address") {
@@ -125,13 +115,7 @@ pub fn dpu_main() -> Result<()> {
         *rmm = measurement_bytes;
     }
 
-    let encryption_mode = match matches.get_one::<String>("encryption_mode") {
-        Some(s) => s.as_str(),
-        None => DEFAULT_ENCRYPTION_MODE,
-    };
-    let encryption_mode = if encryption_mode == "tls" { dpu_runtime::EncryptionMode::Tls } else { dpu_runtime::EncryptionMode::Plaintext };
-
-    let dpu_runtime: dpu_runtime::DPURuntime = dpu_runtime::DPURuntime::new(encryption_mode)?;
+    let dpu_runtime: dpu_runtime::DPURuntime = dpu_runtime::DPURuntime::new()?;
 
     let address = format!("{}:{}", listening_address, listening_port);
     let listener = TcpListener::bind(&address).map_err(|e| {

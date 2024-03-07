@@ -1,12 +1,12 @@
 //! An example to send a file.
 
-use anyhow::anyhow;
+use anyhow::{anyhow, Result};
 use log::{error, info};
-use transport::{messages::{Request, Response, Status}, session::Session};
+use transport::{messages::{Request, Response, Status}, session::{EncryptionMode, Session}};
 
 const DPU_SERVER_URL: &str = "127.0.0.1:6666";
 
-fn main() -> anyhow::Result<()> {
+fn main() -> Result<()> {
     env_logger::init();
 
     // TODO: Parse arguments with clap
@@ -15,6 +15,25 @@ fn main() -> anyhow::Result<()> {
 
     info!("Establishing attested connection with DPU...");
     let dpu_session_id = Session::from_url(dpu_server_url)?;
+
+    info!("Downgrading channel to plaintext...");
+    Session::send_message(
+        dpu_session_id,
+        &Request::SetEncryptionMode(EncryptionMode::Plaintext)
+    )?;
+    Session::set_encryption_mode(dpu_session_id, EncryptionMode::Plaintext)?;
+    let response = Session::receive_message(dpu_session_id)?;
+    match response {
+        Response::Status(Status::Success(_)) => {
+            info!("Successfully downgraded channel");
+        },
+        Response::Status(Status::Fail(e)) => {
+            return Err(anyhow!("Error downgrading channel: {}", e));
+        },
+        _ => {
+            return Err(anyhow!("Error downgrading channel: Other"));
+        },
+    };
 
     info!("Preparing provisions...");
     let filename = "foo.txt".to_owned();

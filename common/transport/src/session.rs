@@ -12,7 +12,7 @@ use log::info;
 use mbedtls::ssl::Context;
 use mbedtls_sys::psa::key_handle_t;
 use parsec_client::BasicClient;
-use serde::{de::DeserializeOwned, Serialize};
+use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use std::{collections::HashMap, net::TcpStream, fmt::Debug, sync::{Mutex, atomic::{AtomicU32, Ordering}, Arc}};
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -36,10 +36,19 @@ pub struct ResponderContext {
     client_attestation_type_list: [u16; 3],
 }
 
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub enum EncryptionMode {
+    Tls,
+    Plaintext
+}
+
 /// Session
 pub struct Session {
     /// TLS session. Exposes a transparent I/O abstraction that simplifies the use of TLS: just read/write from/to it
     tls_context: Context<TcpStream>,
+    /// Encryption mode. For performance reasons local connections (e.g. between host and DPU) should be unencrypted while remote connections (e.g. between two DPUs) should be encrypted.
+    /// Defaults to TLS
+    encryption_mode: EncryptionMode,
     /// Additional context for miscellaneous responder-side data that must live through the entire session
     #[cfg(feature = "responder")]
     #[allow(dead_code)]
@@ -79,7 +88,8 @@ impl Session {
                 session_id,
                 Self {
                     tls_context,
-                    responder_context: None
+                    encryption_mode: EncryptionMode::Tls,
+                    responder_context: None,
                 }
             );
         info!("Session added to hashmap");
@@ -119,14 +129,26 @@ impl Session {
                 session_id,
                 Self {
                     tls_context,
+                    encryption_mode: EncryptionMode::Tls,
                     responder_context: Some(ResponderContext {
                         key_handle: *key_handle,
                         client_attestation_type_list: *client_attestation_type_list,
-                    })
+                    }),
                 }
             );
 
         Ok(session_id)
+    }
+
+    pub fn set_encryption_mode(session_id: SessionId, encryption_mode: EncryptionMode) -> Result<()> {
+        let mut s = SESSIONS
+            .lock()
+            .map_err(|_| anyhow!("Could not lock session table"))?;
+        let s = s
+            .get_mut(&session_id)
+            .ok_or(anyhow!("Session does not exist"))?;
+        s.encryption_mode = encryption_mode;
+        Ok(())
     }
 
     /// Send application message
@@ -140,7 +162,16 @@ impl Session {
         let s = s
             .get_mut(&session_id)
             .ok_or(anyhow!("Session does not exist"))?;
-        tls::send_message(&mut s.tls_context, data)
+        match s.encryption_mode {
+            EncryptionMode::Tls => tls::send_message(&mut s.tls_context, data),
+            EncryptionMode::Plaintext => tcp::send_message(
+                s
+                    .tls_context
+                    .io_mut()
+                    .ok_or(anyhow!("Context has no valid I/O"))?,
+                data
+            ),
+        }
     }
 
     /// Receive application message
@@ -154,45 +185,14 @@ impl Session {
         let s = s
             .get_mut(&session_id)
             .ok_or(anyhow!("Session does not exist"))?;
-        tls::receive_message(&mut s.tls_context)
-    }
-
-    /// Send plaintext (TCP-only) application message
-    pub fn send_message_plaintext<T>(session_id: SessionId, data: T) -> Result<()>
-    where
-    T: Serialize + Debug,
-    {
-        let mut s = SESSIONS
-            .lock()
-            .map_err(|_| anyhow!("Could not lock session table"))?;
-        let s = s
-            .get_mut(&session_id)
-            .ok_or(anyhow!("Session does not exist"))?;
-        tcp::send_message(
-            s
-                .tls_context
-                .io_mut()
-                .ok_or(anyhow!("Context has no valid I/O"))?,
-            data
-        )
-    }
-
-    /// Receive plaintext (TCP-only) application message
-    pub fn receive_message_plaintext<T>(session_id: SessionId) -> Result<T>
-    where
-    T: DeserializeOwned + Debug,
-    {
-        let mut s = SESSIONS
-            .lock()
-            .map_err(|_| anyhow!("Could not lock session table"))?;
-        let s = s
-            .get_mut(&session_id)
-            .ok_or(anyhow!("Session does not exist"))?;
-        tcp::receive_message(
-            s
-                .tls_context
-                .io_mut()
-                .ok_or(anyhow!("Context has no valid I/O"))?
-        )
+        match s.encryption_mode {
+            EncryptionMode::Tls => tls::receive_message(&mut s.tls_context),
+            EncryptionMode::Plaintext => tcp::receive_message(
+                s
+                    .tls_context
+                    .io_mut()
+                    .ok_or(anyhow!("Context has no valid I/O"))?
+            ),
+        }
     }
 }

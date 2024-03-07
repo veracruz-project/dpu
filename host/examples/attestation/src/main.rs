@@ -1,8 +1,8 @@
 //! An example to attest nodes.
 
-use anyhow::anyhow;
+use anyhow::{anyhow, Result};
 use log::{error, info};
-use transport::{messages::{Request, Response, Status}, session::{Session, SessionId}};
+use transport::{messages::{Request, Response, Status}, session::{EncryptionMode, Session, SessionId}};
 
 
 const DPU1_SERVER_URL: &str = "127.0.0.1:6666";
@@ -10,7 +10,7 @@ const DPU2_SERVER_URL: &str = "127.0.0.1:6667";
 const ATTESTATION_SERVER_URL: &str = "127.0.0.1:3010";
 
 /// Attest DPU1 and DPU2 via DPU1. Abort on failure.
-fn main() -> anyhow::Result<()> {
+fn main() -> Result<()> {
     env_logger::init();
 
     // TODO: Parse arguments (DPU1, DPU2, attestation server) with clap
@@ -22,8 +22,27 @@ fn main() -> anyhow::Result<()> {
     info!("Establishing attested connection with DPU1...");
     let dpu1_session_id = Session::from_url(dpu1_server_url)?;
 
+    info!("Downgrading channel to plaintext...");
+    Session::send_message(
+        dpu1_session_id,
+        &Request::SetEncryptionMode(EncryptionMode::Plaintext)
+    )?;
+    Session::set_encryption_mode(dpu1_session_id, EncryptionMode::Plaintext)?;
+    let response = Session::receive_message(dpu1_session_id)?;
+    match response {
+        Response::Status(Status::Success(_)) => {
+            info!("Successfully downgraded channel");
+        },
+        Response::Status(Status::Fail(e)) => {
+            return Err(anyhow!("Error downgrading channel: {}", e));
+        },
+        _ => {
+            return Err(anyhow!("Error downgrading channel: Other"));
+        },
+    };
+
     info!("Indirectly attesting DPU2 via DPU1...");
-    Session::send_message_plaintext(
+    Session::send_message(
         dpu1_session_id,
         &Request::Attest(
             proxy_attestation_server_url.to_owned(),
@@ -32,7 +51,7 @@ fn main() -> anyhow::Result<()> {
         error!("Failed to send attestation message to DPU1.  Error returned: {:?}.", e);
         e
     })?;
-    let response = Session::receive_message_plaintext(dpu1_session_id).map_err(|e| {
+    let response = Session::receive_message(dpu1_session_id).map_err(|e| {
         error!("Failed to receive response to attestation message.  Error received: {:?}.", e);
         e
     })?;
@@ -53,12 +72,12 @@ fn main() -> anyhow::Result<()> {
 
     // Now we can send mesasages to DPU2 using `dpu2_session_id`
     info!("Requesting remote execution...");
-    Session::send_message_plaintext(dpu1_session_id, &Request::Execute("ls -al".to_owned(), Some(dpu2_session_id)))
+    Session::send_message(dpu1_session_id, &Request::Execute("ls -al".to_owned(), Some(dpu2_session_id)))
         .map_err(|e| {
             error!("Failed to send execution message to DPU2.  Error returned: {:?}.", e);
             e
         })?;
-    let response = Session::receive_message_plaintext(dpu1_session_id).map_err(|e| {
+    let response = Session::receive_message(dpu1_session_id).map_err(|e| {
         error!("Failed to receive response to execution message.  Error received: {:?}.", e);
         e
     })?;
